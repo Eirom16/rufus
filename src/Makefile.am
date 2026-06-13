@@ -1,3 +1,9 @@
+if LINUX
+noinst_PROGRAMS = rufus-linux
+rufus_linux_SOURCES = rufus_linux.c
+rufus_linux_CFLAGS = $(AM_CFLAGS) -D_RUFUS
+rufus_linux_LDADD = $(LIBS) -lpthread
+else
 SUBDIRS = ../.mingw bled ext2fs ms-sys syslinux/libfat syslinux/libinstaller syslinux/win libcdio/iso9660 libcdio/udf libcdio/driver wimlib ../res/loc
 # As far as I can tell, the following libraries are *not* vulnerable to side-loading, so we link using their regular version:
 NONVULNERABLE_LIBS = -lole32 -lgdi32 -lshlwapi -lcomctl32 -luuid -lntdll
@@ -22,3 +28,4 @@ rufus_CFLAGS = -I$(srcdir)/ms-sys/inc -I$(srcdir)/syslinux/libfat -I$(srcdir)/sy
 rufus_LDFLAGS = $(AM_LDFLAGS) -mwindows -L../.mingw
 rufus_LDADD = rufus_rc.o bled/libbled.a ext2fs/libext2fs.a ms-sys/libmssys.a syslinux/libfat/libfat.a syslinux/libinstaller/libinstaller.a syslinux/win/libwin.a \
 	libcdio/iso9660/libiso9660.a libcdio/udf/libudf.a libcdio/driver/libdriver.a wimlib/libwim.a $(NONVULNERABLE_LIBS) $(VULNERABLE_LIBS)
+endif

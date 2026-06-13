@@ -18,10 +18,30 @@ AC_CHECK_TOOL(WINDRES, windres, :)
 AC_C_INLINE
 AC_DEFINE([_GNU_SOURCE], [], [Use GNU extensions])
 
-AM_CFLAGS="${AM_CFLAGS} -DWINVER=0x0A00 -D_WIN32_WINNT=0x0A00 -D_WIN32_IE=0x0A00"
-# "-Wl,--nxcompat" to enable DEP (Data Execution Prevention)
-# "-Wl,--dynamicbase" to enable ASLR (Address Space Layout Randomization)
-AM_LDFLAGS="${AM_LDFLAGS} -Wl,-no-undefined -Wl,--nxcompat -Wl,--no-insert-timestamp -Wl,--dynamicbase"
+AC_CANONICAL_HOST
+is_linux=no
+case "$host_os" in
+  linux*)
+    is_linux=yes
+    ;;
+  *)
+    is_linux=no
+    ;;
+esac
+AM_CONDITIONAL([LINUX], [test "x$is_linux" = "xyes"])
+
+if test "x$is_linux" = "xyes"; then
+  PKG_PROG_PKG_CONFIG
+  PKG_CHECK_MODULES([GTK], [gtk+-3.0])
+  PKG_CHECK_MODULES([OPENSSL], [openssl])
+  AM_CFLAGS="${AM_CFLAGS} ${GTK_CFLAGS} ${OPENSSL_CFLAGS}"
+  LIBS="${LIBS} ${GTK_LIBS} ${OPENSSL_LIBS}"
+else
+  AM_CFLAGS="${AM_CFLAGS} -DWINVER=0x0A00 -D_WIN32_WINNT=0x0A00 -D_WIN32_IE=0x0A00"
+  # "-Wl,--nxcompat" to enable DEP (Data Execution Prevention)
+  # "-Wl,--dynamicbase" to enable ASLR (Address Space Layout Randomization)
+  AM_LDFLAGS="${AM_LDFLAGS} -Wl,-no-undefined -Wl,--nxcompat -Wl,--no-insert-timestamp -Wl,--dynamicbase"
+fi
 
 # Debug symbols
 AC_ARG_ENABLE([debug],

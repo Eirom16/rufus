@@ -1,5 +1,9 @@
 SUBDIRS = src
+if LINUX
+TARGET  = rufus-linux
+else
 TARGET  = rufus
+endif
 TAGVER  = $(shell git log --oneline | wc -l)
 SEDCMD  = s/^\([ \t]*\)Version="\([0-9]*\)\.\([0-9]*\)\.[0-9]*\.\([0-9]*\)"\(.*\)/\1Version="\2.\3.@@TAGVER@@.\4"\5/
 
