@@ -10,6 +10,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFileInfo>
+#include <QDir>
+#include <QTemporaryDir>
 #include <QTimer>
 #include <QStyle>
 #include <QFormLayout>
@@ -28,6 +30,30 @@
 #define APP_VERSION "1.0.0"
 
 static const QString kCanceled = QStringLiteral("Canceled.");
+
+static bool mountedTreeHasWindowsInstaller(const QString &root)
+{
+    const QDir dir(root);
+    const QStringList candidates = {
+        "sources/install.wim",
+        "sources/install.esd",
+        "SOURCES/INSTALL.WIM",
+        "SOURCES/INSTALL.ESD",
+        "bootmgr",
+        "BOOTMGR",
+        "bootmgr.efi",
+        "BOOTMGR.EFI",
+        "efi/microsoft/boot/bootmgfw.efi",
+        "EFI/Microsoft/Boot/bootmgfw.efi",
+        "EFI/MICROSOFT/BOOT/BOOTMGFW.EFI",
+    };
+
+    for (const QString &candidate : candidates) {
+        if (QFileInfo::exists(dir.filePath(candidate)))
+            return true;
+    }
+    return false;
+}
 
 static const char *lightStylesheet = R"(
 QGroupBox { font-weight: bold; border: 1px solid #bdc3c7; border-radius: 4px;
@@ -594,22 +620,38 @@ void MainWindow::retranslateUi()
 void MainWindow::checkSystemTools()
 {
     QStringList tools = {"dd", "parted", "partprobe", "udevadm", "lsblk", "findmnt", "umount",
-                         "mkfs.vfat", "mkfs.ntfs", "ntfs-3g", "mkfs.ext4", "mkfs.exfat",
+                         "mkfs.vfat", "mkfs.ntfs", "mkfs.ext4", "mkfs.exfat",
                          "grub-install", "cp", "mount", "sync"};
+    QStringList optionalTools = {"ntfs-3g", "wimlib-imagex", "hivexregedit"};
     QStringList missing;
+    QStringList missingOptional;
 
-    for (const QString &tool : tools) {
+    auto isAvailable = [](const QString &tool) {
         QProcess which;
         which.start("which", {tool});
         which.waitForFinished(2000);
-        if (which.exitCode() != 0)
+        return which.exitCode() == 0;
+    };
+
+    for (const QString &tool : tools) {
+        if (!isAvailable(tool))
             missing << tool;
+    }
+
+    for (const QString &tool : optionalTools) {
+        if (!isAvailable(tool))
+            missingOptional << tool;
     }
 
     if (!missing.isEmpty()) {
         logMessage(tr("WARNING: Missing system tools: ") + missing.join(", "));
     } else {
         logMessage(tr("All required system tools found."));
+    }
+
+    if (!missingOptional.isEmpty()) {
+        logMessage(tr("Optional tools missing: ") + missingOptional.join(", ")
+                   + tr(" (used only as fallback)."));
     }
 }
 
@@ -750,18 +792,57 @@ void MainWindow::checkWindowsIso()
 {
     if (m_selectedIsoPath.isEmpty()) {
         m_winTweaksGroup->setVisible(false);
+        m_winTweaksGroup->setChecked(false);
         return;
     }
 
+    bool isWindows = false;
+
     QProcess proc;
     proc.start("isoinfo", {"-l", "-R", "-J", "-i", m_selectedIsoPath});
-    proc.waitForFinished(10000);
-    QString output = QString::fromUtf8(proc.readAllStandardOutput());
-    bool isWindows = output.contains("install.wim", Qt::CaseInsensitive)
-                  || output.contains("install.esd", Qt::CaseInsensitive);
+    if (proc.waitForFinished(10000) && proc.exitCode() == 0) {
+        const QString output = QString::fromUtf8(proc.readAllStandardOutput());
+        isWindows = output.contains("install.wim", Qt::CaseInsensitive)
+                 || output.contains("install.esd", Qt::CaseInsensitive)
+                 || output.contains("bootmgr", Qt::CaseInsensitive)
+                 || output.contains("bootmgfw.efi", Qt::CaseInsensitive);
+    }
+
+    if (!isWindows) {
+        QTemporaryDir isoTempDir(QStringLiteral("/tmp/rufus-detect-iso-XXXXXX"));
+        if (isoTempDir.isValid()) {
+            QProcess mountProc;
+            mountProc.start("mount", {"-o", "loop,ro", m_selectedIsoPath, isoTempDir.path()});
+            if (mountProc.waitForFinished(15000) && mountProc.exitCode() == 0) {
+                isWindows = mountedTreeHasWindowsInstaller(isoTempDir.path());
+                QProcess umountProc;
+                umountProc.start("umount", {isoTempDir.path()});
+                umountProc.waitForFinished(10000);
+            } else {
+                logMessage(tr("WARNING: Could not inspect ISO contents for Windows setup files."));
+            }
+        }
+    }
+
     m_winTweaksGroup->setVisible(isWindows);
-    if (isWindows)
+    m_winTweaksGroup->setChecked(isWindows);
+
+    if (isWindows) {
         logMessage(tr("Windows ISO detected: installation tweaks available."));
+
+        const qint64 fat32Limit = 4LL * 1024 * 1024 * 1024;
+        if (m_selectedIsoSize > 0 && m_selectedIsoSize < fat32Limit) {
+            if (m_comboPartitionScheme->currentText() != "GPT")
+                m_comboPartitionScheme->setCurrentText("GPT");
+            if (m_comboFilesystem->currentText() != "FAT32")
+                m_comboFilesystem->setCurrentText("FAT32");
+            logMessage(tr("Windows ISO fits in FAT32; using GPT/UEFI + FAT32 to boot through Windows Boot Manager."));
+        } else {
+            logMessage(tr("WARNING: Large Windows ISO detected. NTFS extraction needs UEFI:NTFS support, which is not implemented yet; DD Image mode is recommended."));
+        }
+    } else {
+        logMessage(tr("Windows setup files were not detected in the selected ISO."));
+    }
 }
 
 void MainWindow::onSelectIsoClicked()
@@ -908,12 +989,29 @@ void MainWindow::onStartClicked()
     m_burnThread = new QThread(this);
     bool isoMode = (m_comboImageOption->currentIndex() == 0);
     int winTweaks = 0;
-    if (m_winTweaksGroup->isChecked()) {
-        if (m_checkBypassTpm->isChecked())   winTweaks |= BurnWorker::BypassTpm;
-        if (m_checkBypassRam->isChecked())   winTweaks |= BurnWorker::BypassRam;
-        if (m_checkBypassSecureBoot->isChecked()) winTweaks |= BurnWorker::BypassSecureBoot;
-        if (m_checkLocalAccount->isChecked()) winTweaks |= BurnWorker::LocalAccount;
-        if (m_checkBypassMsAccount->isChecked()) winTweaks |= BurnWorker::BypassMsAccount;
+    if (m_winTweaksGroup->isVisible() && m_winTweaksGroup->isChecked()) {
+        QStringList enabledTweaks;
+        if (m_checkBypassTpm->isChecked()) {
+            winTweaks |= BurnWorker::BypassTpm;
+            enabledTweaks << tr("Bypass TPM");
+        }
+        if (m_checkBypassRam->isChecked()) {
+            winTweaks |= BurnWorker::BypassRam;
+            enabledTweaks << tr("Bypass RAM check");
+        }
+        if (m_checkBypassSecureBoot->isChecked()) {
+            winTweaks |= BurnWorker::BypassSecureBoot;
+            enabledTweaks << tr("Bypass Secure Boot");
+        }
+        if (m_checkLocalAccount->isChecked()) {
+            winTweaks |= BurnWorker::LocalAccount;
+            enabledTweaks << tr("Local account");
+        }
+        if (m_checkBypassMsAccount->isChecked()) {
+            winTweaks |= BurnWorker::BypassMsAccount;
+            enabledTweaks << tr("Bypass Microsoft account");
+        }
+        logMessage(tr("Windows installation tweaks enabled: %1").arg(enabledTweaks.join(", ")));
     }
     m_burnWorker = new BurnWorker(devicePath, isoPath, fs, partScheme,
                                    volumeLabel, writeIso, m_selectedIsoSize,

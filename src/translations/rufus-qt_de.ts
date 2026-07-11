@@ -1,4 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="de">
 <context>
     <name>BurnWorker</name>
@@ -51,7 +52,7 @@
         <translation>Partitionstabelle mit parted erstellen...</translation>
     </message>
     <message>
-        <source>Formatting partition %1 to %2 with label '%3'...</source>
+        <source>Formatting partition %1 to %2 with label &apos;%3&apos;...</source>
         <translation>Partition P0 wird in P1 mit der Bezeichnung „P2“ formatiert...</translation>
     </message>
     <message>
@@ -212,6 +213,206 @@ Your bootable drive is ready!</source>
         <translation>Rufus Qt hat das USB-Gerät P0 erfolgreich formatiert und beschrieben.
 Ihr bootfähiges Laufwerk ist fertig!</translation>
     </message>
+    <message>
+        <source>No mounted partitions found on %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timed out waiting for partition node %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing file copy...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning ISO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning ISO contents to calculate copy progress...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy plan: %1 files, %2 directories, %3 total.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying files... %1% (%2/%3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1/s | ETA %2 | %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not create symbolic link %1; skipping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to write %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying %1 (%2)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File copy complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied %1 in %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied %1 files (%2) in %3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting ISO contents to USB...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting ISO...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create temporary mount directories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Using existing mounted ISO at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mounting NTFS partition with kernel ntfs3 driver...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kernel ntfs3 mount failed; trying ntfs-3g...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to mount NTFS partition. Install ntfs-3g or enable kernel ntfs3 support.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Using existing mounted USB partition at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying files from ISO to USB... This can take several minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Files copied successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installing GRUB for BIOS boot...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: GRUB installation failed. Drive may not boot on BIOS systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GRUB installed for BIOS boot.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: grub-install not found. Install &apos;grub&apos; package for BIOS boot support.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Applying Windows installation tweaks...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flushing copied files to USB...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flushing copied files to USB. This may take a while on slow drives...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ISO extraction complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Writing autounattend.xml for OOBE bypass...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autounattend.xml written successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not write autounattend.xml</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No install.wim found — autounattend.xml will be used, but may not work with custom Windows builds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: wimlib-imagex not found. Install &apos;wimlib&apos; for registry-based Windows tweaks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Injecting bypass registry keys... (may take a while)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Failed to mount install.wim — skipping registry injection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registry injection complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create partitions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to format partition.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract ISO image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows installer detected: skipping GRUB installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows install media should boot through Windows Boot Manager, not GRUB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Legacy BIOS/MBR boot for extracted Windows ISOs is not supported yet. Use DD Image mode, or use GPT/UEFI.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: UEFI firmware usually cannot boot NTFS directly without UEFI:NTFS support. If the ISO fits, use FAT32; otherwise use DD Image mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: hivexregedit not found. Registry injection skipped; autounattend.xml will still be used.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HashWorker</name>
@@ -243,7 +444,7 @@ SHA-256: P5</translation>
     </message>
     <message>
         <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. 'sudo rufus-qt').</source>
+Please run the application as root (e.g. &apos;sudo rufus-qt&apos;).</source>
         <translation>Rufus Qt benötigt Root-Rechte, um Raw-Block-Geräte zu schreiben.
 Bitte führen Sie die Anwendung als Root aus (z. B. „sudo rufus-qt“).</translation>
     </message>
@@ -253,7 +454,7 @@ Bitte führen Sie die Anwendung als Root aus (z. B. „sudo rufus-qt“).</trans
     </message>
     <message>
         <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. 'sudo rufus-qt' or 'pkexec rufus-qt').</source>
+Please run the application as root (e.g. &apos;sudo rufus-qt&apos; or &apos;pkexec rufus-qt&apos;).</source>
         <translation>Rufus Qt benötigt Root-Rechte, um Raw-Block-Geräte zu schreiben.
 Bitte führen Sie die Anwendung als Root aus (z. B. „sudo rufus-qt“ oder „pkexec rufus-qt“).</translation>
     </message>
@@ -502,7 +703,7 @@ Bitte führen Sie die Anwendung als Root aus (z. B. „sudo rufus-qt“ oder „
         <translation>Keine bootfähige ISO ausgewählt</translation>
     </message>
     <message>
-        <source>You have selected 'Disk or ISO image' as the boot selection, but have not chosen a file. Please click 'SELECT' and choose an ISO first.</source>
+        <source>You have selected &apos;Disk or ISO image&apos; as the boot selection, but have not chosen a file. Please click &apos;SELECT&apos; and choose an ISO first.</source>
         <translation>Sie haben als Boot-Auswahl „Disk oder ISO-Image“ ausgewählt, aber keine Datei ausgewählt. Klicken Sie bitte auf „AUSWÄHLEN“ und wählen Sie zunächst eine ISO aus.</translation>
     </message>
     <message>
@@ -518,7 +719,7 @@ Please select a smaller image or a larger USB drive.</source>
 Bitte wählen Sie ein kleineres Bild oder ein größeres USB-Laufwerk aus.</translation>
     </message>
     <message>
-        <source>WARNING: ALL DATA ON DEVICE '/dev/%1' WILL BE DESTROYED!
+        <source>WARNING: ALL DATA ON DEVICE &apos;/dev/%1&apos; WILL BE DESTROYED!
 
 Disk Model: %2
 Capacity: %3
@@ -561,16 +762,16 @@ Um mit diesem Vorgang fortzufahren, klicken Sie auf OK. Um den Vorgang zu beende
     </message>
     <message>
         <source>Select application language (restart required):</source>
-        <translation>Anwendungssprache auswählen (Neustart erforderlich):</translation>
+        <translation type="vanished">Anwendungssprache auswählen (Neustart erforderlich):</translation>
     </message>
     <message>
         <source>Language Changed</source>
-        <translation>Sprache geändert</translation>
+        <translation type="vanished">Sprache geändert</translation>
     </message>
     <message>
         <source>Language has been set to %1.
 Please restart the application for the change to take effect.</source>
-        <translation>Die Sprache wurde auf P0 eingestellt.
+        <translation type="vanished">Die Sprache wurde auf P0 eingestellt.
 Bitte starten Sie die Anwendung neu, damit die Änderung wirksam wird.</translation>
     </message>
     <message>
@@ -628,6 +829,98 @@ Bitte starten Sie die Anwendung neu, damit die Änderung wirksam wird.</translat
     <message>
         <source>Dark</source>
         <translation>Dunkel</translation>
+    </message>
+    <message>
+        <source>Windows Installation Tweaks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass TPM 2.0 check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass 4 GB RAM check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Secure Boot check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure local account (autologin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Microsoft account requirement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional tools missing: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (used only as fallback).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows ISO detected: installation tweaks available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select application language:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected translation could not be loaded. The application will use English.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows ISO fits in FAT32; using GPT/UEFI + FAT32 to boot through Windows Boot Manager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Large Windows ISO detected. NTFS extraction needs UEFI:NTFS support, which is not implemented yet; DD Image mode is recommended.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not inspect ISO contents for Windows setup files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows setup files were not detected in the selected ISO.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass TPM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass RAM check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Secure Boot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Microsoft account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows installation tweaks enabled: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

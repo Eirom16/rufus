@@ -51,6 +51,7 @@ private:
     bool formatPartition();
     bool writeIsoImage();
     bool extractIsoImage();
+    bool copyTreeWithProgress(const QString &sourceRoot, const QString &targetRoot);
     bool createPersistentPartition();
     bool validateUefiBoot();
     bool writeWindowsTweaks(const QString &usbMnt);

@@ -1,4 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="ru">
 <context>
     <name>BurnWorker</name>
@@ -8,7 +9,7 @@
     </message>
     <message>
         <source>Command timed out after %1 seconds</source>
-        <translation>Время ожидания команды истекло через %1 секунд.</translation>
+        <translation>Время ожидания команды истекло через %1&#xa0;секунд.</translation>
     </message>
     <message>
         <source>Failed with exit code %1</source>
@@ -51,7 +52,7 @@
         <translation>Создание таблицы разделов с помощью parted...</translation>
     </message>
     <message>
-        <source>Formatting partition %1 to %2 with label '%3'...</source>
+        <source>Formatting partition %1 to %2 with label &apos;%3&apos;...</source>
         <translation>Форматирование раздела %1 в %2 с меткой «%3»...</translation>
     </message>
     <message>
@@ -212,6 +213,206 @@ Your bootable drive is ready!</source>
         <translation>Rufus Qt успешно отформатировал и записал на USB-устройство %1.
 Ваш загрузочный диск готов!</translation>
     </message>
+    <message>
+        <source>No mounted partitions found on %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timed out waiting for partition node %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preparing file copy...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning ISO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning ISO contents to calculate copy progress...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy plan: %1 files, %2 directories, %3 total.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying files... %1% (%2/%3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1/s | ETA %2 | %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not create symbolic link %1; skipping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to read %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to write %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying %1 (%2)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File copy complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied %1 in %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied %1 files (%2) in %3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting ISO contents to USB...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting ISO...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create temporary mount directories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Using existing mounted ISO at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mounting NTFS partition with kernel ntfs3 driver...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kernel ntfs3 mount failed; trying ntfs-3g...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to mount NTFS partition. Install ntfs-3g or enable kernel ntfs3 support.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Using existing mounted USB partition at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copying files from ISO to USB... This can take several minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Files copied successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installing GRUB for BIOS boot...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: GRUB installation failed. Drive may not boot on BIOS systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GRUB installed for BIOS boot.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: grub-install not found. Install &apos;grub&apos; package for BIOS boot support.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Applying Windows installation tweaks...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flushing copied files to USB...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flushing copied files to USB. This may take a while on slow drives...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ISO extraction complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Writing autounattend.xml for OOBE bypass...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autounattend.xml written successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not write autounattend.xml</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No install.wim found — autounattend.xml will be used, but may not work with custom Windows builds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: wimlib-imagex not found. Install &apos;wimlib&apos; for registry-based Windows tweaks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Injecting bypass registry keys... (may take a while)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Failed to mount install.wim — skipping registry injection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registry injection complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create partitions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to format partition.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract ISO image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows installer detected: skipping GRUB installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows install media should boot through Windows Boot Manager, not GRUB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Legacy BIOS/MBR boot for extracted Windows ISOs is not supported yet. Use DD Image mode, or use GPT/UEFI.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: UEFI firmware usually cannot boot NTFS directly without UEFI:NTFS support. If the ISO fits, use FAT32; otherwise use DD Image mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: hivexregedit not found. Registry injection skipped; autounattend.xml will still be used.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HashWorker</name>
@@ -243,7 +444,7 @@ SHA-256: %6</translation>
     </message>
     <message>
         <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. 'sudo rufus-qt').</source>
+Please run the application as root (e.g. &apos;sudo rufus-qt&apos;).</source>
         <translation>Rufus Qt необходимы права root для записи необработанных блочных устройств.
 Пожалуйста, запустите приложение от имени пользователя root (например, «sudo rufus-qt»).</translation>
     </message>
@@ -253,7 +454,7 @@ Please run the application as root (e.g. 'sudo rufus-qt').</source>
     </message>
     <message>
         <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. 'sudo rufus-qt' or 'pkexec rufus-qt').</source>
+Please run the application as root (e.g. &apos;sudo rufus-qt&apos; or &apos;pkexec rufus-qt&apos;).</source>
         <translation>Rufus Qt необходимы права root для записи необработанных блочных устройств.
 Запустите приложение от имени пользователя root (например, «sudo rufus-qt» или «pkexec rufus-qt»).</translation>
     </message>
@@ -502,7 +703,7 @@ Please run the application as root (e.g. 'sudo rufus-qt' or 'pkexec rufus-qt').<
         <translation>Загрузочный ISO не выбран</translation>
     </message>
     <message>
-        <source>You have selected 'Disk or ISO image' as the boot selection, but have not chosen a file. Please click 'SELECT' and choose an ISO first.</source>
+        <source>You have selected &apos;Disk or ISO image&apos; as the boot selection, but have not chosen a file. Please click &apos;SELECT&apos; and choose an ISO first.</source>
         <translation>Вы выбрали «Диск или ISO-образ» в качестве выбора загрузки, но не выбрали файл. Пожалуйста, нажмите «ВЫБРАТЬ» и сначала выберите ISO.</translation>
     </message>
     <message>
@@ -518,13 +719,13 @@ Please select a smaller image or a larger USB drive.</source>
 Выберите изображение меньшего размера или USB-накопитель большего размера.</translation>
     </message>
     <message>
-        <source>WARNING: ALL DATA ON DEVICE '/dev/%1' WILL BE DESTROYED!
+        <source>WARNING: ALL DATA ON DEVICE &apos;/dev/%1&apos; WILL BE DESTROYED!
 
 Disk Model: %2
 Capacity: %3
 
 To continue with this operation, click OK. To quit click Cancel.</source>
-        <translation>ВНИМАНИЕ: ВСЕ ДАННЫЕ НА УСТРОЙСТВЕ '/dev/%1' БУДУТ УНИЧТОЖЕНЫ!
+        <translation>ВНИМАНИЕ: ВСЕ ДАННЫЕ НА УСТРОЙСТВЕ &apos;/dev/%1&apos; БУДУТ УНИЧТОЖЕНЫ!
 
 Модель диска: %2
 Емкость: %3
@@ -561,16 +762,16 @@ To continue with this operation, click OK. To quit click Cancel.</source>
     </message>
     <message>
         <source>Select application language (restart required):</source>
-        <translation>Выберите язык приложения (требуется перезагрузка):</translation>
+        <translation type="vanished">Выберите язык приложения (требуется перезагрузка):</translation>
     </message>
     <message>
         <source>Language Changed</source>
-        <translation>Язык изменен</translation>
+        <translation type="vanished">Язык изменен</translation>
     </message>
     <message>
         <source>Language has been set to %1.
 Please restart the application for the change to take effect.</source>
-        <translation>Язык установлен на %1 .
+        <translation type="vanished">Язык установлен на %1 .
 Пожалуйста, перезапустите приложение, чтобы изменения вступили в силу.</translation>
     </message>
     <message>
@@ -628,6 +829,98 @@ Please restart the application for the change to take effect.</source>
     <message>
         <source>Dark</source>
         <translation>Темный</translation>
+    </message>
+    <message>
+        <source>Windows Installation Tweaks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass TPM 2.0 check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass 4 GB RAM check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Secure Boot check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure local account (autologin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Microsoft account requirement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional tools missing: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (used only as fallback).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows ISO detected: installation tweaks available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select application language:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The selected translation could not be loaded. The application will use English.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows ISO fits in FAT32; using GPT/UEFI + FAT32 to boot through Windows Boot Manager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Large Windows ISO detected. NTFS extraction needs UEFI:NTFS support, which is not implemented yet; DD Image mode is recommended.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARNING: Could not inspect ISO contents for Windows setup files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows setup files were not detected in the selected ISO.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass TPM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass RAM check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Secure Boot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bypass Microsoft account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows installation tweaks enabled: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -6,6 +6,7 @@
 #include <QDataStream>
 #include <QRegularExpression>
 #include <QDir>
+#include <QDirIterator>
 #include <QTemporaryDir>
 
 #include <algorithm>
@@ -35,6 +36,49 @@ static QString mountedTargetForSource(const QString &source)
 static bool isRufusTempMount(const QString &target, const QString &prefix)
 {
     return target == "/tmp/" + prefix || target.startsWith("/tmp/" + prefix + "-");
+}
+
+static QString formatBytes(qint64 bytes)
+{
+    static const char *units[] = {"B", "KB", "MB", "GB", "TB"};
+    double value = static_cast<double>(bytes);
+    int unit = 0;
+    while (value >= 1024.0 && unit < 4) {
+        value /= 1024.0;
+        ++unit;
+    }
+    return QString("%1 %2").arg(value, 0, unit == 0 ? 'f' : 'f', unit == 0 ? 0 : 1).arg(units[unit]);
+}
+
+static QString formatDuration(qint64 seconds)
+{
+    if (seconds < 0)
+        seconds = 0;
+
+    const qint64 hours = seconds / 3600;
+    const qint64 minutes = (seconds % 3600) / 60;
+    const qint64 secs = seconds % 60;
+
+    if (hours > 0)
+        return QString("%1:%2:%3")
+            .arg(hours, 2, 10, QChar('0'))
+            .arg(minutes, 2, 10, QChar('0'))
+            .arg(secs, 2, 10, QChar('0'));
+
+    return QString("%1:%2")
+        .arg(minutes, 2, 10, QChar('0'))
+        .arg(secs, 2, 10, QChar('0'));
+}
+
+static bool isWindowsInstallerMount(const QString &root)
+{
+    const QDir dir(root);
+    return QFileInfo::exists(dir.filePath("bootmgr"))
+        || QFileInfo::exists(dir.filePath("bootmgr.efi"))
+        || QFileInfo::exists(dir.filePath("sources/install.wim"))
+        || QFileInfo::exists(dir.filePath("sources/install.esd"))
+        || QFileInfo::exists(dir.filePath("efi/microsoft/boot/bootmgfw.efi"))
+        || QFileInfo::exists(dir.filePath("EFI/Microsoft/Boot/bootmgfw.efi"));
 }
 
 // ── BurnWorker ─────────────────────────────────────────────────────────
@@ -385,6 +429,157 @@ bool BurnWorker::writeIsoImage()
     return true;
 }
 
+bool BurnWorker::copyTreeWithProgress(const QString &sourceRoot, const QString &targetRoot)
+{
+    emit progressUpdated(0.58, tr("Preparing file copy..."), tr("Scanning ISO"));
+    emit logMessage(tr("Scanning ISO contents to calculate copy progress..."));
+
+    struct CopyEntry {
+        QString source;
+        QString target;
+        QFileInfo info;
+    };
+
+    QList<CopyEntry> entries;
+    qint64 totalBytes = 0;
+    int totalFiles = 0;
+    int totalDirs = 0;
+
+    QDirIterator scanner(sourceRoot,
+                         QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot,
+                         QDirIterator::Subdirectories);
+    while (scanner.hasNext()) {
+        if (m_canceled)
+            return false;
+
+        scanner.next();
+        QFileInfo info = scanner.fileInfo();
+        const QString relativePath = QDir(sourceRoot).relativeFilePath(info.filePath());
+        CopyEntry entry{info.filePath(), QDir(targetRoot).filePath(relativePath), info};
+        entries.append(entry);
+
+        if (info.isDir()) {
+            ++totalDirs;
+        } else if (info.isFile()) {
+            ++totalFiles;
+            totalBytes += info.size();
+        }
+    }
+
+    emit logMessage(tr("Copy plan: %1 files, %2 directories, %3 total.")
+                    .arg(totalFiles).arg(totalDirs).arg(formatBytes(totalBytes)));
+
+    QElapsedTimer timer;
+    QElapsedTimer uiTimer;
+    timer.start();
+    uiTimer.start();
+
+    qint64 copiedBytes = 0;
+    int copiedFiles = 0;
+    QByteArray buffer;
+    buffer.resize(1024 * 1024);
+
+    auto updateProgress = [&](const QString &currentFile, bool force) {
+        if (!force && uiTimer.elapsed() < 500)
+            return;
+        uiTimer.restart();
+
+        const double fileProgress = totalBytes > 0
+            ? static_cast<double>(copiedBytes) / static_cast<double>(totalBytes)
+            : 1.0;
+        const double overallProgress = 0.58 + (fileProgress * 0.32);
+        const double elapsedSecs = qMax(0.001, timer.elapsed() / 1000.0);
+        const double speed = copiedBytes / elapsedSecs;
+        const qint64 remaining = totalBytes > copiedBytes ? totalBytes - copiedBytes : 0;
+        const qint64 etaSecs = speed > 1.0 ? static_cast<qint64>(remaining / speed) : 0;
+
+        emit progressUpdated(overallProgress,
+            tr("Copying files... %1% (%2/%3)")
+                .arg(fileProgress * 100.0, 0, 'f', 1)
+                .arg(copiedFiles)
+                .arg(totalFiles),
+            tr("%1/s | ETA %2 | %3")
+                .arg(formatBytes(static_cast<qint64>(speed)))
+                .arg(formatDuration(etaSecs), QFileInfo(currentFile).fileName()));
+    };
+
+    for (const CopyEntry &entry : entries) {
+        if (m_canceled)
+            return false;
+
+        if (entry.info.isDir()) {
+            QDir().mkpath(entry.target);
+            continue;
+        }
+
+        QFileInfo targetInfo(entry.target);
+        QDir().mkpath(targetInfo.absolutePath());
+
+        if (entry.info.isSymLink()) {
+            QFile::remove(entry.target);
+            if (!QFile::link(entry.info.symLinkTarget(), entry.target)) {
+                emit logMessage(tr("WARNING: Could not create symbolic link %1; skipping.").arg(entry.target));
+            }
+            continue;
+        }
+
+        if (!entry.info.isFile())
+            continue;
+
+        QFile in(entry.source);
+        if (!in.open(QIODevice::ReadOnly)) {
+            emit logMessage(tr("Failed to read %1: %2").arg(entry.source, in.errorString()));
+            return false;
+        }
+
+        QFile::remove(entry.target);
+        QFile out(entry.target);
+        if (!out.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            emit logMessage(tr("Failed to write %1: %2").arg(entry.target, out.errorString()));
+            return false;
+        }
+
+        emit logMessage(tr("Copying %1 (%2)...")
+                        .arg(QDir(sourceRoot).relativeFilePath(entry.source), formatBytes(entry.info.size())));
+
+        while (!in.atEnd()) {
+            if (m_canceled)
+                return false;
+
+            const qint64 read = in.read(buffer.data(), buffer.size());
+            if (read < 0) {
+                emit logMessage(tr("Failed to read %1: %2").arg(entry.source, in.errorString()));
+                return false;
+            }
+
+            qint64 writtenTotal = 0;
+            while (writtenTotal < read) {
+                const qint64 written = out.write(buffer.constData() + writtenTotal, read - writtenTotal);
+                if (written < 0) {
+                    emit logMessage(tr("Failed to write %1: %2").arg(entry.target, out.errorString()));
+                    return false;
+                }
+                writtenTotal += written;
+                copiedBytes += written;
+                updateProgress(entry.source, false);
+            }
+        }
+
+        out.setPermissions(entry.info.permissions());
+        out.close();
+        in.close();
+        ++copiedFiles;
+        updateProgress(entry.source, true);
+    }
+
+    emit progressUpdated(0.90, tr("File copy complete."), tr("Copied %1 in %2")
+                         .arg(formatBytes(copiedBytes), formatDuration(timer.elapsed() / 1000)));
+    emit logMessage(tr("Copied %1 files (%2) in %3.")
+                    .arg(copiedFiles)
+                    .arg(formatBytes(copiedBytes), formatDuration(timer.elapsed() / 1000)));
+    return true;
+}
+
 bool BurnWorker::extractIsoImage()
 {
     emit logMessage(tr("Extracting ISO contents to USB..."));
@@ -463,14 +658,24 @@ bool BurnWorker::extractIsoImage()
             runCmd("umount", {isoMnt}, "EXTRACT");
     };
 
-    emit logMessage(tr("Copying files from ISO to USB..."));
-    if (!runCmd("cp", {"-a", isoMnt + "/.", usbMnt + "/"}, "EXTRACT")) {
+    emit logMessage(tr("Copying files from ISO to USB... This can take several minutes."));
+    if (!copyTreeWithProgress(isoMnt, usbMnt)) {
         cleanupMounts();
         return false;
     }
     emit logMessage(tr("Files copied successfully."));
 
-    if (m_partitionScheme == "MBR") {
+    const bool windowsInstaller = isWindowsInstallerMount(isoMnt);
+    if (windowsInstaller) {
+        emit logMessage(tr("Windows installer detected: skipping GRUB installation."));
+        emit logMessage(tr("Windows install media should boot through Windows Boot Manager, not GRUB."));
+        if (m_partitionScheme == "MBR") {
+            emit logMessage(tr("WARNING: Legacy BIOS/MBR boot for extracted Windows ISOs is not supported yet. Use DD Image mode, or use GPT/UEFI."));
+        }
+        if (m_filesystem == "NTFS") {
+            emit logMessage(tr("WARNING: UEFI firmware usually cannot boot NTFS directly without UEFI:NTFS support. If the ISO fits, use FAT32; otherwise use DD Image mode."));
+        }
+    } else if (m_partitionScheme == "MBR") {
         emit progressUpdated(0.78, tr("Installing GRUB for BIOS boot..."), tr("Busy"));
         QProcess which;
         which.start("which", {"grub-install"});
@@ -495,8 +700,11 @@ bool BurnWorker::extractIsoImage()
         writeWindowsTweaks(usbMnt);
     }
 
-    runCmd("sync", {}, "EXTRACT");
+    emit progressUpdated(0.92, tr("Flushing copied files to USB..."), tr("Please wait"));
+    emit logMessage(tr("Flushing copied files to USB. This may take a while on slow drives..."));
+    runCmd("sync", {}, "EXTRACT", 0);
     cleanupMounts();
+    emit progressUpdated(0.94, tr("ISO extraction complete."), tr("Done"));
     emit logMessage(tr("ISO extraction complete."));
     return true;
 }
@@ -505,20 +713,39 @@ bool BurnWorker::writeWindowsTweaks(const QString &usbMnt)
 {
     // Stage 1: autounattend.xml (works on retail Windows 10/11)
     emit logMessage(tr("Writing autounattend.xml for OOBE bypass..."));
+
+    QStringList runSyncCommands;
+    if (m_winTweaks & BypassTpm)
+        runSyncCommands << "reg add HKLM\\SYSTEM\\Setup\\LabConfig /v BypassTPMCheck /t REG_DWORD /d 1 /f";
+    if (m_winTweaks & BypassRam)
+        runSyncCommands << "reg add HKLM\\SYSTEM\\Setup\\LabConfig /v BypassRAMCheck /t REG_DWORD /d 1 /f";
+    if (m_winTweaks & BypassSecureBoot)
+        runSyncCommands << "reg add HKLM\\SYSTEM\\Setup\\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1 /f";
+    if (m_winTweaks & BypassMsAccount)
+        runSyncCommands << "reg add HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\OOBE /v BypassNRO /t REG_DWORD /d 1 /f";
+
     QString xml = R"(<?xml version="1.0" encoding="utf-8"?>
-<unattend xmlns="urn:schemas-microsoft-com:unattend">
+<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
     <settings pass="windowsPE">
         <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <UserData>
                 <AcceptEula>true</AcceptEula>
             </UserData>
 )";
-    if (m_winTweaks & BypassTpm)
-        xml += "            <BypassTPMCheck>true</BypassTPMCheck>\n";
-    if (m_winTweaks & BypassRam)
-        xml += "            <BypassRAMCheck>true</BypassRAMCheck>\n";
-    if (m_winTweaks & BypassSecureBoot)
-        xml += "            <BypassSecureBootCheck>true</BypassSecureBootCheck>\n";
+
+    if (!runSyncCommands.isEmpty()) {
+        xml += "            <RunSynchronous>\n";
+        int order = 1;
+        for (const QString &cmd : runSyncCommands) {
+            xml += QString(R"(                <RunSynchronousCommand wcm:action="add">
+                    <Order>%1</Order>
+                    <Path>cmd /c %2</Path>
+                </RunSynchronousCommand>
+)").arg(order++).arg(cmd);
+        }
+        xml += "            </RunSynchronous>\n";
+    }
+
     xml += R"(        </component>
     </settings>
     <settings pass="oobeSystem">
@@ -529,8 +756,8 @@ bool BurnWorker::writeWindowsTweaks(const QString &usbMnt)
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>dQBzAGUAcgBQAGEAcwBzAHcAbwByAGQA</Value>
-                            <PlainText>false</PlainText>
+                            <Value>rufus</Value>
+                            <PlainText>true</PlainText>
                         </Password>
                         <DisplayName>RufusUser</DisplayName>
                         <Name>RufusUser</Name>
@@ -541,6 +768,10 @@ bool BurnWorker::writeWindowsTweaks(const QString &usbMnt)
             <AutoLogon>
                 <Enabled>true</Enabled>
                 <Username>RufusUser</Username>
+                <Password>
+                    <Value>rufus</Value>
+                    <PlainText>true</PlainText>
+                </Password>
             </AutoLogon>
 )";
     }
@@ -605,45 +836,45 @@ bool BurnWorker::writeWindowsTweaks(const QString &usbMnt)
         return true;
     }
 
-    QString hivePath = mntWim + "/Windows/System32/config/SOFTWARE";
-    QString regContent = "Windows Registry Editor Version 5.00\n\n";
-    regContent += "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\OOBE]\n";
+    const QString softwareHivePath = mntWim + "/Windows/System32/config/SOFTWARE";
+    const QString systemHivePath = mntWim + "/Windows/System32/config/SYSTEM";
+
+    QString labConfigReg = "Windows Registry Editor Version 5.00\n\n";
+    labConfigReg += "[HKEY_LOCAL_MACHINE\\SYSTEM\\Setup\\LabConfig]\n";
     if (m_winTweaks & BypassTpm)
-        regContent += "\"BypassTPMCheck\"=dword:00000001\n";
+        labConfigReg += "\"BypassTPMCheck\"=dword:00000001\n";
     if (m_winTweaks & BypassRam)
-        regContent += "\"BypassRAMCheck\"=dword:00000001\n";
+        labConfigReg += "\"BypassRAMCheck\"=dword:00000001\n";
     if (m_winTweaks & BypassSecureBoot)
-        regContent += "\"BypassSecureBootCheck\"=dword:00000001\n";
+        labConfigReg += "\"BypassSecureBootCheck\"=dword:00000001\n";
+
+    QString oobeReg = "Windows Registry Editor Version 5.00\n\n";
+    oobeReg += "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\OOBE]\n";
+    if (m_winTweaks & BypassMsAccount)
+        oobeReg += "\"BypassNRO\"=dword:00000001\n";
 
     // Check for hivexregedit (Linux registry hive editor)
     which.start("which", {"hivexregedit"});
     which.waitForFinished(2000);
     if (which.exitCode() == 0) {
-        QString regFile = mntWim + "/_tweaks.reg";
-        QFile rf(regFile);
-        if (rf.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-            rf.write(regContent.toUtf8());
-            rf.close();
-            runCmd("hivexregedit", {"--merge", "--prefix",
-                   "HKEY_LOCAL_MACHINE\\SOFTWARE", hivePath, regFile}, "WIM", 60);
-            QFile::remove(regFile);
-        }
+        auto mergeReg = [&](const QString &hivePath, const QString &prefix,
+                            const QString &content, const QString &name) {
+            QString regFile = mntWim + "/" + name;
+            QFile rf(regFile);
+            if (rf.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+                rf.write(content.toUtf8());
+                rf.close();
+                runCmd("hivexregedit", {"--merge", "--prefix", prefix, hivePath, regFile}, "WIM", 60);
+                QFile::remove(regFile);
+            }
+        };
+
+        if (m_winTweaks & (BypassTpm | BypassRam | BypassSecureBoot))
+            mergeReg(systemHivePath, "HKEY_LOCAL_MACHINE\\SYSTEM", labConfigReg, "_labconfig.reg");
+        if (m_winTweaks & BypassMsAccount)
+            mergeReg(softwareHivePath, "HKEY_LOCAL_MACHINE\\SOFTWARE", oobeReg, "_oobe.reg");
     } else {
-        // Check for chntpw as fallback
-        emit logMessage(tr("hivexregedit not found, trying chntpw..."));
-        for (const auto &tweak : {"BypassTPMCheck", "BypassRAMCheck", "BypassSecureBootCheck"}) {
-            if (!(m_winTweaks & (tweak == QString("BypassTPMCheck") ? BypassTpm
-                               : tweak == QString("BypassRAMCheck") ? BypassRam
-                               : BypassSecureBoot)))
-                continue;
-            QStringList args = {"-e", hivePath};
-            QString cmd = QString("cd /tmp/rufus-wim/Windows/System32/config "
-                                "&& chntpw -e SOFTWARE <<< \"cd Microsoft\\Windows\\CurrentVersion\\Setup\\OOBE\n"
-                                "ed %1 1\nsave\nquit\n\"").arg(tweak);
-            QProcess p;
-            p.start("bash", {"-c", cmd});
-            p.waitForFinished(30000);
-        }
+        emit logMessage(tr("WARNING: hivexregedit not found. Registry injection skipped; autounattend.xml will still be used."));
     }
 
     runCmd("wimlib-imagex", {"unmount", mntWim, "--commit"}, "WIM", 300);
