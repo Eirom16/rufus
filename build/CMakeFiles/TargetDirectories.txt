@@ -1,0 +1,16 @@
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/edit_cache.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/rebuild_cache.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/list_install_components.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/install.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/install/local.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles/install/strip.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt_qm.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/edit_cache.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rebuild_cache.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/list_install_components.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/install.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/install/local.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/install/strip.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt_autogen_timestamp_deps.dir
+/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt_autogen.dir

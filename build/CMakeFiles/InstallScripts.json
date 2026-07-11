@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/eirom/Documents/New Folder/rufus-linux/build/cmake_install.cmake",
+		"/home/eirom/Documents/New Folder/rufus-linux/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

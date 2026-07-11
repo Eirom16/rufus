@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+  <qresource prefix="/i18n">
+    <file alias="rufus-qt_es.qm">/home/eirom/Documents/New Folder/rufus-linux/build/src/translations/rufus-qt_es.qm</file>
+    <file alias="rufus-qt_pt_BR.qm">/home/eirom/Documents/New Folder/rufus-linux/build/src/translations/rufus-qt_pt_BR.qm</file>
+    <file alias="rufus-qt_ru.qm">/home/eirom/Documents/New Folder/rufus-linux/build/src/translations/rufus-qt_ru.qm</file>
+    <file alias="rufus-qt_fr.qm">/home/eirom/Documents/New Folder/rufus-linux/build/src/translations/rufus-qt_fr.qm</file>
+    <file alias="rufus-qt_de.qm">/home/eirom/Documents/New Folder/rufus-linux/build/src/translations/rufus-qt_de.qm</file>
+  </qresource>
+</RCC>
