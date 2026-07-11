@@ -4,7 +4,6 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QFileInfo>
-#include <QTranslator>
 #include <QSettings>
 #include <unistd.h>
 
@@ -18,18 +17,6 @@ int main(int argc, char *argv[])
     app.setOrganizationName("Rufus");
     app.setWindowIcon(QIcon::fromTheme("drive-removable-media-usb",
         QIcon(":/icons/rufus-128.png")));
-
-    // Load translation (user override > system locale)
-    QTranslator translator;
-    QSettings s("Rufus", "rufus-qt");
-    QString langOverride = s.value("language", "").toString();
-    if (!langOverride.isEmpty()) {
-        if (translator.load("rufus-qt_" + langOverride, ":/i18n"))
-            app.installTranslator(&translator);
-    } else {
-        if (translator.load(QLocale(), "rufus-qt", "_", ":/i18n"))
-            app.installTranslator(&translator);
-    }
 
     // Force Breeze style on KDE if available (looks native)
     if (QApplication::style()->name() != "breeze")

@@ -99,6 +99,9 @@ MainWindow::MainWindow(QWidget *parent)
     detectSystemRootDisk();
     checkSystemTools();
 
+    loadTranslator("");
+    retranslateUi();
+
     connect(QApplication::styleHints(), &QStyleHints::colorSchemeChanged,
             this, &MainWindow::applyTheme);
 
@@ -150,12 +153,12 @@ void MainWindow::setupUi()
     setupDriveProperties();
     leftCol->addWidget(m_advancedDriveGroup);
 
-    auto *bootGroup = new QGroupBox(tr("Boot Selection"));
-    auto *bootGrid = new QGridLayout(bootGroup);
+    m_bootGroup = new QGroupBox(tr("Boot Selection"));
+    auto *bootGrid = new QGridLayout(m_bootGroup);
     bootGrid->setSpacing(1);
     bootGrid->setContentsMargins(4, 10, 4, 4);
 
-    auto *lblBoot = new QLabel(tr("Boot selection:"));
+    m_lblBoot = new QLabel(tr("Boot selection:"));
     m_comboBootSelection = new QComboBox();
     m_comboBootSelection->addItem(tr("Disk or ISO image (Please select)"));
     m_comboBootSelection->addItem(tr("Non bootable"));
@@ -173,36 +176,36 @@ void MainWindow::setupUi()
     bootRow->addWidget(m_btnSelectIso);
     bootGrid->addLayout(bootRow, 0, 0, 1, 2);
 
-    auto *lblImageOption = new QLabel(tr("Image option:"));
+    m_lblImageOption = new QLabel(tr("Image option:"));
     m_comboImageOption = new QComboBox();
     m_comboImageOption->addItems({tr("Write in ISO Image mode"), tr("Write in DD Image mode")});
     m_comboImageOption->setEnabled(false);
-    bootGrid->addWidget(lblImageOption, 1, 0);
+    bootGrid->addWidget(m_lblImageOption, 1, 0);
     bootGrid->addWidget(m_comboImageOption, 1, 1);
 
-    auto *lblIsoTitle = new QLabel(tr("Selected file:"));
+    m_lblIsoTitle = new QLabel(tr("Selected file:"));
     m_lblIsoName = new QLabel(tr("No image selected"));
     m_lblIsoName->setStyleSheet("color: #7f8c8d; font-style: italic; font-weight: normal;");
-    bootGrid->addWidget(lblIsoTitle, 2, 0);
+    bootGrid->addWidget(m_lblIsoTitle, 2, 0);
     bootGrid->addWidget(m_lblIsoName, 2, 1);
 
-    auto *lblPartition = new QLabel(tr("Partition scheme:"));
+    m_lblPartition = new QLabel(tr("Partition scheme:"));
     m_comboPartitionScheme = new QComboBox();
     m_comboPartitionScheme->addItems({"GPT", "MBR"});
     connect(m_comboPartitionScheme, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::onPartitionSchemeChanged);
 
-    auto *lblTarget = new QLabel(tr("Target system:"));
+    m_lblTarget = new QLabel(tr("Target system:"));
     m_comboTargetSystem = new QComboBox();
     m_comboTargetSystem->addItems({tr("UEFI (non CSM)"), tr("BIOS or UEFI-CSM")});
     connect(m_comboTargetSystem, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::onTargetSystemChanged);
 
-    bootGrid->addWidget(lblPartition, 3, 0);
+    bootGrid->addWidget(m_lblPartition, 3, 0);
     bootGrid->addWidget(m_comboPartitionScheme, 3, 1);
-    bootGrid->addWidget(lblTarget, 4, 0);
+    bootGrid->addWidget(m_lblTarget, 4, 0);
     bootGrid->addWidget(m_comboTargetSystem, 4, 1);
-    leftCol->addWidget(bootGroup);
+    leftCol->addWidget(m_bootGroup);
     columns->addLayout(leftCol, 1);
 
     // Right column: Format Options
@@ -281,7 +284,7 @@ void MainWindow::setupDriveProperties()
     auto *layout = new QVBoxLayout(m_advancedDriveGroup);
 
     auto *deviceRow = new QHBoxLayout();
-    auto *lblDevice = new QLabel(tr("Device:"));
+    m_lblDevice = new QLabel(tr("Device:"));
     m_comboDevice = new QComboBox();
     m_comboDevice->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_btnRefresh = new QPushButton();
@@ -289,7 +292,7 @@ void MainWindow::setupDriveProperties()
     m_btnRefresh->setToolTip(tr("Refresh device list"));
     connect(m_btnRefresh, &QPushButton::clicked, this, &MainWindow::refreshDevices);
 
-    deviceRow->addWidget(lblDevice);
+    deviceRow->addWidget(m_lblDevice);
     deviceRow->addWidget(m_comboDevice, 1);
     deviceRow->addWidget(m_btnRefresh);
     layout->addLayout(deviceRow);
@@ -305,14 +308,14 @@ void MainWindow::setupDriveProperties()
     auto *advDriveWidget = new QWidget();
     advDriveWidget->setLayout(advDriveLayout);
 
-    auto *expander = new QGroupBox(tr("Show advanced drive properties"));
-    expander->setCheckable(true);
-    expander->setChecked(false);
-    expander->setFlat(true);
-    auto *expanderLayout = new QVBoxLayout(expander);
+    m_driveExpander = new QGroupBox(tr("Show advanced drive properties"));
+    m_driveExpander->setCheckable(true);
+    m_driveExpander->setChecked(false);
+    m_driveExpander->setFlat(true);
+    auto *expanderLayout = new QVBoxLayout(m_driveExpander);
     expanderLayout->setContentsMargins(0, 0, 0, 0);
     expanderLayout->addWidget(advDriveWidget);
-    layout->addWidget(expander);
+    layout->addWidget(m_driveExpander);
 }
 
 void MainWindow::setupFormatOptions()
@@ -322,24 +325,24 @@ void MainWindow::setupFormatOptions()
     layout->setSpacing(2);
     layout->setContentsMargins(4, 10, 4, 4);
 
-    auto *lblVolume = new QLabel(tr("Volume label:"));
+    m_lblVolume = new QLabel(tr("Volume label:"));
     m_entryVolumeLabel = new QLineEdit();
     m_entryVolumeLabel->setPlaceholderText("RUFUS");
-    layout->addWidget(lblVolume, 0, 0);
+    layout->addWidget(m_lblVolume, 0, 0);
     layout->addWidget(m_entryVolumeLabel, 0, 1);
 
     m_checkExtendedLabel = new QCheckBox(tr("Extended label and icon files"));
     layout->addWidget(m_checkExtendedLabel, 1, 0, 1, 2);
 
-    auto *lblFs = new QLabel(tr("File system:"));
+    m_lblFs = new QLabel(tr("File system:"));
     m_comboFilesystem = new QComboBox();
-    m_comboFilesystem->addItems({"FAT32", "NTFS", "exFAT", "ext4"});
-    layout->addWidget(lblFs, 2, 0);
+    m_comboFilesystem->addItems({"NTFS", "FAT32", "exFAT", "ext4"});
+    layout->addWidget(m_lblFs, 2, 0);
     layout->addWidget(m_comboFilesystem, 2, 1);
 
-    auto *lblCluster = new QLabel(tr("Cluster size:"));
+    m_lblCluster = new QLabel(tr("Cluster size:"));
     m_comboClusterSize = new QComboBox();
-    layout->addWidget(lblCluster, 3, 0);
+    layout->addWidget(m_lblCluster, 3, 0);
     layout->addWidget(m_comboClusterSize, 3, 1);
 
     m_checkQuickFormat = new QCheckBox(tr("Quick format"));
@@ -377,6 +380,28 @@ void MainWindow::setupFormatOptions()
 
     m_checkUefiValidation = new QCheckBox(tr("UEFI validation (Secure Boot)"));
     layout->addWidget(m_checkUefiValidation, 7, 0, 1, 2);
+
+    m_winTweaksGroup = new QGroupBox(tr("Windows Installation Tweaks"));
+    m_winTweaksGroup->setCheckable(true);
+    m_winTweaksGroup->setChecked(false);
+    m_winTweaksGroup->setVisible(false);
+    auto *winLayout = new QVBoxLayout(m_winTweaksGroup);
+    m_checkBypassTpm = new QCheckBox(tr("Bypass TPM 2.0 check"));
+    m_checkBypassTpm->setChecked(true);
+    m_checkBypassRam = new QCheckBox(tr("Bypass 4 GB RAM check"));
+    m_checkBypassRam->setChecked(true);
+    m_checkBypassSecureBoot = new QCheckBox(tr("Bypass Secure Boot check"));
+    m_checkBypassSecureBoot->setChecked(true);
+    m_checkLocalAccount = new QCheckBox(tr("Configure local account (autologin)"));
+    m_checkLocalAccount->setChecked(true);
+    m_checkBypassMsAccount = new QCheckBox(tr("Bypass Microsoft account requirement"));
+    m_checkBypassMsAccount->setChecked(true);
+    winLayout->addWidget(m_checkBypassTpm);
+    winLayout->addWidget(m_checkBypassRam);
+    winLayout->addWidget(m_checkBypassSecureBoot);
+    winLayout->addWidget(m_checkLocalAccount);
+    winLayout->addWidget(m_checkBypassMsAccount);
+    layout->addWidget(m_winTweaksGroup, 8, 0, 1, 2);
 
     auto updateClusterSizes = [this]() {
         m_comboClusterSize->clear();
@@ -435,12 +460,142 @@ void MainWindow::setupStatusSection()
     layout->addWidget(m_logView, 1);
 }
 
+// ── Language ───────────────────────────────────────────────────────────
+
+bool MainWindow::loadTranslator(const QString &language)
+{
+    if (m_translator) {
+        QCoreApplication::removeTranslator(m_translator);
+        delete m_translator;
+        m_translator = nullptr;
+    }
+
+    QString lang = language;
+    if (lang.isEmpty()) {
+        QSettings s("Rufus", "rufus-qt");
+        lang = s.value("language", "").toString();
+    }
+
+    if (lang == "en") {
+        return true;
+    }
+
+    m_translator = new QTranslator(this);
+    bool loaded = false;
+
+    if (!lang.isEmpty()) {
+        const QString qmName = QStringLiteral("rufus-qt_%1.qm").arg(lang);
+        loaded = m_translator->load(QStringLiteral(":/i18n/%1").arg(qmName),
+                                    QString(), QString(), QString());
+        if (!loaded) {
+            loaded = m_translator->load(qmName,
+                                        QCoreApplication::applicationDirPath() + "/translations",
+                                        QString(), QString());
+        }
+    } else {
+        loaded = m_translator->load(QLocale(), "rufus-qt", "_", ":/i18n");
+        if (!loaded) {
+            loaded = m_translator->load(QLocale(), "rufus-qt", "_",
+                                       QCoreApplication::applicationDirPath() + "/translations");
+        }
+    }
+
+    if (loaded) {
+        QCoreApplication::installTranslator(m_translator);
+        return true;
+    }
+
+    delete m_translator;
+    m_translator = nullptr;
+    return lang.isEmpty();
+}
+
+void MainWindow::retranslateUi()
+{
+    setWindowTitle(tr("Rufus Qt v") + APP_VERSION);
+
+    // Toolbar
+    m_toolbar->setWindowTitle(tr("Main Toolbar"));
+    m_langAction->setText(tr("Language"));
+    m_settingsAction->setText(tr("Settings"));
+    m_logAction->setText(tr("Log"));
+    m_aboutAction->setText(tr("About"));
+
+    // Drive Properties
+    m_advancedDriveGroup->setTitle(tr("Drive Properties"));
+    m_lblDevice->setText(tr("Device:"));
+    m_btnRefresh->setToolTip(tr("Refresh device list"));
+    m_checkShowAll->setText(tr("List USB Hard Drives (Use with caution)"));
+    m_checkOldBios->setText(tr("Add fixes for old BIOSes (extra partition, alignment)"));
+    m_driveExpander->setTitle(tr("Show advanced drive properties"));
+
+    // Boot Selection
+    m_bootGroup->setTitle(tr("Boot Selection"));
+    m_lblBoot->setText(tr("Boot selection:"));
+    m_comboBootSelection->setItemText(0, tr("Disk or ISO image (Please select)"));
+    m_comboBootSelection->setItemText(1, tr("Non bootable"));
+    m_btnSelectIso->setText(tr("SELECT"));
+    m_lblImageOption->setText(tr("Image option:"));
+    m_comboImageOption->setItemText(0, tr("Write in ISO Image mode"));
+    m_comboImageOption->setItemText(1, tr("Write in DD Image mode"));
+    m_lblIsoTitle->setText(tr("Selected file:"));
+    if (m_selectedIsoPath.isEmpty())
+        m_lblIsoName->setText(tr("No image selected"));
+    m_lblPartition->setText(tr("Partition scheme:"));
+    m_lblTarget->setText(tr("Target system:"));
+    m_comboTargetSystem->setItemText(0, tr("UEFI (non CSM)"));
+    m_comboTargetSystem->setItemText(1, tr("BIOS or UEFI-CSM"));
+
+    // Format Options
+    m_advancedFormatGroup->setTitle(tr("Format Options"));
+    m_lblVolume->setText(tr("Volume label:"));
+    m_entryVolumeLabel->setPlaceholderText("RUFUS");
+    m_checkExtendedLabel->setText(tr("Extended label and icon files"));
+    m_lblFs->setText(tr("File system:"));
+    m_lblCluster->setText(tr("Cluster size:"));
+    m_checkQuickFormat->setText(tr("Quick format"));
+    m_checkBadBlocks->setText(tr("Bad blocks"));
+    m_comboNbPasses->setItemText(0, tr("1 pass"));
+    m_comboNbPasses->setItemText(1, tr("2 passes"));
+    m_comboNbPasses->setItemText(2, tr("3 passes"));
+    m_comboNbPasses->setItemText(3, tr("4 passes"));
+    m_comboNbPasses->setItemText(4, tr("5 passes"));
+    m_checkPersistent->setText(tr("Persistent"));
+    m_comboPersistenceUnits->setItemText(0, tr("MB"));
+    m_comboPersistenceUnits->setItemText(1, tr("GB"));
+    m_checkUefiValidation->setText(tr("UEFI validation (Secure Boot)"));
+
+    // Windows Tweaks
+    m_winTweaksGroup->setTitle(tr("Windows Installation Tweaks"));
+    m_checkBypassTpm->setText(tr("Bypass TPM 2.0 check"));
+    m_checkBypassRam->setText(tr("Bypass 4 GB RAM check"));
+    m_checkBypassSecureBoot->setText(tr("Bypass Secure Boot check"));
+    m_checkLocalAccount->setText(tr("Configure local account (autologin)"));
+    m_checkBypassMsAccount->setText(tr("Bypass Microsoft account requirement"));
+
+    // Status
+    m_statusGroup->setTitle(tr("Status"));
+    m_lblStatus->setText(tr("Ready"));
+
+    // Buttons
+    if (m_isRunning) {
+        m_btnStart->setText(tr("CANCEL"));
+    } else {
+        m_btnStart->setText(tr("START"));
+    }
+    m_btnClose->setText(tr("CLOSE"));
+
+    // Log toggle
+    m_btnLogToggle->setText(m_logView->isVisible() ? tr("Hide Log") : tr("Show Log"));
+}
+
 // ── System Tools Check ────────────────────────────────────────────────
 
 void MainWindow::checkSystemTools()
 {
-    QStringList tools = {"dd", "parted", "lsblk", "findmnt", "umount",
-                         "mkfs.vfat", "mkfs.ntfs", "mkfs.ext4", "mkfs.exfat", "sync"};
+    QStringList tools = {"dd", "parted", "partprobe", "udevadm", "lsblk", "findmnt", "umount",
+                         "mkfs.vfat", "mkfs.ntfs", "ntfs-3g", "mkfs.ext4", "mkfs.exfat",
+                         "grub-install", "cp", "mount", "sync"};
     QStringList missing;
 
     for (const QString &tool : tools) {
@@ -591,6 +746,24 @@ void MainWindow::onBootSelectionChanged(int index)
     }
 }
 
+void MainWindow::checkWindowsIso()
+{
+    if (m_selectedIsoPath.isEmpty()) {
+        m_winTweaksGroup->setVisible(false);
+        return;
+    }
+
+    QProcess proc;
+    proc.start("isoinfo", {"-l", "-R", "-J", "-i", m_selectedIsoPath});
+    proc.waitForFinished(10000);
+    QString output = QString::fromUtf8(proc.readAllStandardOutput());
+    bool isWindows = output.contains("install.wim", Qt::CaseInsensitive)
+                  || output.contains("install.esd", Qt::CaseInsensitive);
+    m_winTweaksGroup->setVisible(isWindows);
+    if (isWindows)
+        logMessage(tr("Windows ISO detected: installation tweaks available."));
+}
+
 void MainWindow::onSelectIsoClicked()
 {
     QString path = QFileDialog::getOpenFileName(this,
@@ -637,6 +810,8 @@ void MainWindow::onSelectIsoClicked()
     connect(m_hashWorker, &HashWorker::finished, this, &MainWindow::onHashFinished);
     connect(m_hashThread, &QThread::finished, m_hashWorker, &QObject::deleteLater);
     m_hashThread->start();
+
+    checkWindowsIso();
 }
 
 // ── Partition Scheme / Target System linking ──────────────────────────
@@ -731,9 +906,19 @@ void MainWindow::onStartClicked()
         m_burnThread->wait();
     }
     m_burnThread = new QThread(this);
+    bool isoMode = (m_comboImageOption->currentIndex() == 0);
+    int winTweaks = 0;
+    if (m_winTweaksGroup->isChecked()) {
+        if (m_checkBypassTpm->isChecked())   winTweaks |= BurnWorker::BypassTpm;
+        if (m_checkBypassRam->isChecked())   winTweaks |= BurnWorker::BypassRam;
+        if (m_checkBypassSecureBoot->isChecked()) winTweaks |= BurnWorker::BypassSecureBoot;
+        if (m_checkLocalAccount->isChecked()) winTweaks |= BurnWorker::LocalAccount;
+        if (m_checkBypassMsAccount->isChecked()) winTweaks |= BurnWorker::BypassMsAccount;
+    }
     m_burnWorker = new BurnWorker(devicePath, isoPath, fs, partScheme,
                                    volumeLabel, writeIso, m_selectedIsoSize,
-                                   badBlocks, persistent, persistentSize, persistentUnits);
+                                   badBlocks, persistent, persistentSize, persistentUnits,
+                                   isoMode, winTweaks);
     m_burnWorker->moveToThread(m_burnThread);
 
     connect(m_burnThread, &QThread::started, m_burnWorker, &BurnWorker::burn);
@@ -867,12 +1052,23 @@ void MainWindow::onLanguageAction()
 
     QSettings s("Rufus", "rufus-qt");
     QString current = s.value("language", "").toString();
-    for (int i = 0; i < list->count(); i++) {
-        if (list->item(i)->data(Qt::UserRole).toString() == current)
-            list->setCurrentRow(i);
+    if (current.isEmpty()) {
+        current = QLocale::system().name();
+        if (current.startsWith("pt_"))
+            current = "pt_BR";
+        else
+            current = current.left(2);
     }
+    for (int i = 0; i < list->count(); i++) {
+        if (list->item(i)->data(Qt::UserRole).toString() == current) {
+            list->setCurrentRow(i);
+            break;
+        }
+    }
+    if (list->currentRow() < 0)
+        list->setCurrentRow(0);
 
-    layout->addWidget(new QLabel(tr("Select application language (restart required):")));
+    layout->addWidget(new QLabel(tr("Select application language:")));
     layout->addWidget(list, 1);
 
     auto *btnBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -887,9 +1083,12 @@ void MainWindow::onLanguageAction()
     QString code = item->data(Qt::UserRole).toString();
     s.setValue("language", code);
 
-    QMessageBox::information(this, tr("Language Changed"),
-        tr("Language has been set to %1.\nPlease restart the application for the change to take effect.")
-        .arg(item->text()));
+    const bool loaded = loadTranslator(code);
+    retranslateUi();
+    if (!loaded) {
+        QMessageBox::warning(this, tr("Language"),
+            tr("The selected translation could not be loaded. The application will use English."));
+    }
 }
 
 void MainWindow::onAboutAction()

@@ -20,12 +20,12 @@
 #include <QStyleHints>
 
 struct DiskInfo {
-    QString name;      // e.g. "sdb"
-    QString model;     // e.g. "Cruzer Blade"
-    QString size;      // e.g. "14.9G"
-    qint64 sizeBytes;  // size in bytes
-    bool removable;    // true for USB
-    bool readOnly;     // true for read-only
+    QString name;
+    QString model;
+    QString size;
+    qint64 sizeBytes;
+    bool removable;
+    bool readOnly;
 };
 
 class BurnWorker;
@@ -54,7 +54,6 @@ private slots:
     void onAboutAction();
     void onSettingsAction();
 
-    // Worker callbacks
     void onBurnProgress(double pct, const QString &status, const QString &speedEta);
     void onBurnLog(const QString &msg);
     void onBurnFinished(const QString &result);
@@ -75,6 +74,9 @@ private:
     void disableControls();
     void enableControls();
     void logMessage(const QString &msg);
+    bool loadTranslator(const QString &language);
+    void retranslateUi();
+    void checkWindowsIso();
 
     // UI state
     QString m_lastIsoDir;
@@ -98,21 +100,33 @@ private:
     QCheckBox *m_checkShowAll = nullptr;
     QCheckBox *m_checkOldBios = nullptr;
     QGroupBox *m_advancedDriveGroup = nullptr;
+    QLabel *m_lblDevice = nullptr;
+    QGroupBox *m_driveExpander = nullptr;
 
     // Boot Selection
+    QGroupBox *m_bootGroup = nullptr;
+    QLabel *m_lblBoot = nullptr;
     QComboBox *m_comboBootSelection = nullptr;
     QPushButton *m_btnSelectIso = nullptr;
+    QLabel *m_lblImageOption = nullptr;
     QComboBox *m_comboImageOption = nullptr;
+    QLabel *m_lblIsoTitle = nullptr;
     QLabel *m_lblIsoName = nullptr;
+    QLabel *m_lblPartition = nullptr;
     QComboBox *m_comboPartitionScheme = nullptr;
+    QLabel *m_lblTarget = nullptr;
     QComboBox *m_comboTargetSystem = nullptr;
 
     // Format Options
+    QGroupBox *m_advancedFormatGroup = nullptr;
+    QLabel *m_lblVolume = nullptr;
     QLineEdit *m_entryVolumeLabel = nullptr;
+    QCheckBox *m_checkExtendedLabel = nullptr;
+    QLabel *m_lblFs = nullptr;
     QComboBox *m_comboFilesystem = nullptr;
+    QLabel *m_lblCluster = nullptr;
     QComboBox *m_comboClusterSize = nullptr;
     QCheckBox *m_checkQuickFormat = nullptr;
-    QCheckBox *m_checkExtendedLabel = nullptr;
     QCheckBox *m_checkBadBlocks = nullptr;
     QComboBox *m_comboNbPasses = nullptr;
     QCheckBox *m_checkPersistent = nullptr;
@@ -120,7 +134,14 @@ private:
     QSpinBox *m_persistenceSize = nullptr;
     QComboBox *m_comboPersistenceUnits = nullptr;
     QCheckBox *m_checkUefiValidation = nullptr;
-    QGroupBox *m_advancedFormatGroup = nullptr;
+
+    // Windows Tweaks (created dynamically, only for Windows ISOs)
+    QGroupBox *m_winTweaksGroup = nullptr;
+    QCheckBox *m_checkBypassTpm = nullptr;
+    QCheckBox *m_checkBypassRam = nullptr;
+    QCheckBox *m_checkBypassSecureBoot = nullptr;
+    QCheckBox *m_checkLocalAccount = nullptr;
+    QCheckBox *m_checkBypassMsAccount = nullptr;
 
     // Status
     QGroupBox *m_statusGroup = nullptr;
@@ -139,6 +160,9 @@ private:
     BurnWorker *m_burnWorker = nullptr;
     QThread *m_hashThread = nullptr;
     HashWorker *m_hashWorker = nullptr;
+
+    // Translator
+    QTranslator *m_translator = nullptr;
 };
 
 #endif // MAINWINDOW_H

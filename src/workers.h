@@ -12,11 +12,22 @@ class BurnWorker : public QObject
     Q_OBJECT
 
 public:
+    enum WinTweak {
+        NoTweaks          = 0,
+        BypassTpm         = 1 << 0,
+        BypassRam         = 1 << 1,
+        BypassSecureBoot  = 1 << 2,
+        LocalAccount      = 1 << 3,
+        BypassMsAccount   = 1 << 4,
+    };
+    Q_DECLARE_FLAGS(WinTweaks, WinTweak)
+
     explicit BurnWorker(const QString &devicePath, const QString &isoPath,
                         const QString &filesystem, const QString &partitionScheme,
                         const QString &volumeLabel, bool writeIso, qint64 isoSize,
                         int badBlocks, bool persistent, int persistentSize,
-                        const QString &persistentUnits,
+                        const QString &persistentUnits, bool isoMode,
+                        int winTweaks = 0,
                         QObject *parent = nullptr);
 
     static bool checkIsoUefi(const QString &isoPath);
@@ -39,8 +50,13 @@ private:
     bool createPartitions();
     bool formatPartition();
     bool writeIsoImage();
+    bool extractIsoImage();
     bool createPersistentPartition();
     bool validateUefiBoot();
+    bool writeWindowsTweaks(const QString &usbMnt);
+    bool rescanPartitions();
+    bool waitForPartition(int num, int timeoutSecs = 10);
+    QString partitionPath(int num) const;
 
     QString m_devicePath;
     QString m_isoPath;
@@ -53,6 +69,8 @@ private:
     bool m_persistent;
     int m_persistentSize;
     QString m_persistentUnits;
+    bool m_isoMode;
+    int m_winTweaks;
 
     QElapsedTimer m_timer;
     bool m_canceled = false;
@@ -76,5 +94,7 @@ signals:
 private:
     QString m_filePath;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(BurnWorker::WinTweaks)
 
 #endif // WORKERS_H

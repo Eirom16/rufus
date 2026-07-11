@@ -47,24 +47,6 @@
 *.opensdf
 *.o_manifest
 
-# Generated build files
-.deps
-.libs
-Makefile
-Makefile.in
-Makefile.am
-aclocal.m4
-autom4te.cache
-config.cache
-config.guess
-config.log
-config.status
-config.sub
-depcomp
-embedded.loc
-config.h
-config.h.in
-
 # Visual Studio / IDE
 /.vs/
 *.vcxproj*
@@ -84,7 +66,6 @@ config.h.in
 # Output directories and release packages
 /rufus_files
 release/
-build/
 *.tar.gz
 *.tar.xz
 *.zip
@@ -104,7 +85,6 @@ src/*.a
 src/*.so
 
 # Generated directories and files
-stamp-h1
 /.vs/rufus
 /arm
 /arm64

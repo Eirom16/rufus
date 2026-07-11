@@ -1,296 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
+<?xml version='1.0' encoding='utf-8'?>
 <TS version="2.1" language="ru">
 <context>
     <name>BurnWorker</name>
     <message>
-        <location filename="../workers.cpp" line="54"/>
         <source>Failed to start: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось запустить: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="74"/>
         <source>Command timed out after %1 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Время ожидания команды истекло через %1 секунд.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="94"/>
         <source>Failed with exit code %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка с кодом выхода %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="105"/>
         <source>Unmounting any active partitions on %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Отключение всех активных разделов на %1...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="112"/>
         <source>Wiping partition table on %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистка таблицы разделов на %1...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="119"/>
         <source>Scanning for bad blocks (%1 pass)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканирование плохих блоков (проход %1)...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="120"/>
         <source>Scanning for bad blocks...</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканирование на наличие плохих блоков...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="120"/>
-        <location filename="../workers.cpp" line="371"/>
-        <location filename="../workers.cpp" line="375"/>
-        <location filename="../workers.cpp" line="393"/>
-        <location filename="../workers.cpp" line="401"/>
-        <location filename="../workers.cpp" line="408"/>
-        <location filename="../workers.cpp" line="417"/>
         <source>Busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Занятый</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="133"/>
         <source>not available, skipping scan.</source>
-        <translation type="unfinished"></translation>
+        <translation>недоступен, пропуск сканирования.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="148"/>
         <source>WARNING: Bad blocks found or scan incomplete. Continuing anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Обнаружены плохие блоки или сканирование неполное. Продолжаем в любом случае.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="150"/>
         <source>Bad block scan complete — no errors found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканирование плохих блоков завершено — ошибок не обнаружено.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="157"/>
         <source>Creating partition table using parted...</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание таблицы разделов с помощью parted...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="192"/>
-        <source>Formatting partition %1 to %2 with label &apos;%3&apos;...</source>
-        <translation type="unfinished"></translation>
+        <source>Formatting partition %1 to %2 with label '%3'...</source>
+        <translation>Форматирование раздела %1 в %2 с меткой «%3»...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="210"/>
         <source>Starting ISO burn process...</source>
-        <translation type="unfinished"></translation>
+        <translation>Запускаем процесс записи ISO...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="221"/>
         <source>CRITICAL ERROR: Failed to launch dd subprocess!</source>
-        <translation type="unfinished"></translation>
+        <translation>КРИТИЧЕСКАЯ ОШИБКА: Не удалось запустить подпроцесс dd!</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="254"/>
         <source>Speed: %1 MB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>Скорость: %1 МБ/с</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="261"/>
         <source>ETA: %1:%2:%3</source>
-        <translation type="unfinished"></translation>
+        <translation>Расчетное время прибытия: %1 : %2 : %3</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="266"/>
         <source>ETA: %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Расчетное время прибытия: %1 : %2</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="270"/>
         <source>Writing ISO... %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Запись ISO... %1 %</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="282"/>
         <source>Finished with exit code %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершено с кодом выхода %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="290"/>
         <source>Creating persistent storage partition...</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание раздела постоянного хранилища...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="309"/>
         <source>Validating UEFI boot structure...</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка структуры загрузки UEFI...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="318"/>
         <source>UEFI validation: could not mount partition.</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка UEFI: не удалось смонтировать раздел.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="326"/>
         <source>UEFI validation PASSED: EFI boot loader found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка UEFI ПРОЙДЕНА: найден загрузчик EFI.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="329"/>
         <source>WARNING: No EFI boot loader found. The drive may not boot on UEFI systems.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: загрузчик EFI не найден. Диск может не загружаться в системах UEFI.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="360"/>
-        <location filename="../workers.cpp" line="369"/>
         <source>================================================</source>
-        <translation type="unfinished"></translation>
+        <translation>==============================================</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="361"/>
         <source>Starting formatting/writing process for device: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Запуск процесса форматирования/записи устройства: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="362"/>
         <source>Target partition scheme: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Схема целевого раздела: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="363"/>
         <source>Target filesystem: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Целевая файловая система: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="364"/>
         <source>Volume label: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Метка тома: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="366"/>
         <source>Source ISO image: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Исходный ISO-образ: %1.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="368"/>
         <source>Persistent storage: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Постоянное хранилище: %1 %2</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="371"/>
         <source>Unmounting existing partitions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Размонтирование существующих разделов...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="373"/>
-        <location filename="../workers.cpp" line="377"/>
-        <location filename="../workers.cpp" line="381"/>
-        <location filename="../workers.cpp" line="385"/>
-        <location filename="../workers.cpp" line="390"/>
-        <location filename="../workers.cpp" line="395"/>
-        <location filename="../workers.cpp" line="399"/>
-        <location filename="../workers.cpp" line="403"/>
-        <location filename="../workers.cpp" line="410"/>
-        <location filename="../workers.cpp" line="414"/>
-        <location filename="../workers.cpp" line="423"/>
         <source>Canceled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменено.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="375"/>
         <source>Wiping partition tables...</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистка таблиц разделов...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="378"/>
         <source>Failed to wipe device. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось очистить устройство. Подробности проверьте в журнале.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="386"/>
         <source>Bad block scan failed or aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканирование плохих блоков завершилось неудачно или прервано.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="393"/>
         <source>Creating partitions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание разделов...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="396"/>
         <source>Failed to create partitions. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось создать разделы. Подробности проверьте в журнале.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="401"/>
         <source>Formatting filesystem...</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматирование файловой системы...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="404"/>
         <source>Failed to format partition. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось отформатировать раздел. Подробности проверьте в журнале.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="408"/>
         <source>Writing ISO image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Запись ISO-образа...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="410"/>
         <source>Failed to write ISO image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось записать ISO-образ.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="417"/>
         <source>Creating persistent partition...</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание постоянного раздела...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="420"/>
         <source>WARNING: Failed to create persistent partition.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Не удалось создать постоянный раздел.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="425"/>
         <source>Synchronizing filesystem cache...</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронизация кэша файловой системы...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="425"/>
         <source>Syncing</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронизация</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="426"/>
         <source>Flushing cache buffers... Please do not unplug the drive!</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистка буферов кэша... Пожалуйста, не отключайте диск!</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="428"/>
         <source>Synchronized. USB drive is now safe to unplug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронизировано. USB-накопитель теперь можно безопасно отключить.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="430"/>
         <source>Complete!</source>
-        <translation type="unfinished"></translation>
+        <translation>Полный!</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="430"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Сделанный</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="431"/>
         <source>Rufus Qt has successfully formatted and written to the USB device %1.
 Your bootable drive is ready!</source>
-        <translation type="unfinished"></translation>
+        <translation>Rufus Qt успешно отформатировал и записал на USB-устройство %1.
+Ваш загрузочный диск готов!</translation>
     </message>
 </context>
 <context>
     <name>HashWorker</name>
     <message>
-        <location filename="../workers.cpp" line="447"/>
         <source>Error opening image file for checksum.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка открытия файла изображения для проверки контрольной суммы.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="471"/>
         <source>File: %1
 Size: %2 bytes (%3 GB)
 
@@ -298,490 +227,407 @@ MD5:    %4
 SHA-1:  %5
 SHA-256:%6
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Файл: %1
+Размер: %2 байт ( %3 ГБ).
+
+MD5: ЗАМЕСИТЕЛЬ3
+SHA-1: %5
+SHA-256: %6</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="92"/>
+        <source>Privilege Escalation Failed</source>
+        <translation>Повышение привилегий не удалось</translation>
+    </message>
+    <message>
+        <source>Rufus Qt needs root privileges to write raw block devices.
+Please run the application as root (e.g. 'sudo rufus-qt').</source>
+        <translation>Rufus Qt необходимы права root для записи необработанных блочных устройств.
+Пожалуйста, запустите приложение от имени пользователя root (например, «sudo rufus-qt»).</translation>
+    </message>
+    <message>
+        <source>Privilege Escalation Required</source>
+        <translation>Требуется повышение привилегий</translation>
+    </message>
+    <message>
+        <source>Rufus Qt needs root privileges to write raw block devices.
+Please run the application as root (e.g. 'sudo rufus-qt' or 'pkexec rufus-qt').</source>
+        <translation>Rufus Qt необходимы права root для записи необработанных блочных устройств.
+Запустите приложение от имени пользователя root (например, «sudo rufus-qt» или «pkexec rufus-qt»).</translation>
+    </message>
+    <message>
         <source>Rufus Qt v</source>
-        <translation type="unfinished"></translation>
+        <translation>Руфус Qt v</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="153"/>
         <source>Boot Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор загрузки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="158"/>
         <source>Boot selection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор загрузки:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="160"/>
         <source>Disk or ISO image (Please select)</source>
-        <translation type="unfinished"></translation>
+        <translation>Диск или ISO-образ (выберите)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="161"/>
         <source>Non bootable</source>
-        <translation type="unfinished"></translation>
+        <translation>Не загрузочный</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="166"/>
         <source>SELECT</source>
-        <translation type="unfinished"></translation>
+        <translation>ВЫБИРАТЬ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="176"/>
         <source>Image option:</source>
-        <translation type="unfinished"></translation>
+        <translation>Вариант изображения:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="178"/>
         <source>Write in ISO Image mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Запись в режиме ISO-образа</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="178"/>
         <source>Write in DD Image mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Запись в режиме DD Image</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="183"/>
         <source>Selected file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбранный файл:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="588"/>
         <source>No image selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Изображение не выбрано</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="189"/>
         <source>Partition scheme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Схема раздела:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="195"/>
         <source>Target system:</source>
-        <translation type="unfinished"></translation>
+        <translation>Целевая система:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="197"/>
         <source>UEFI (non CSM)</source>
-        <translation type="unfinished"></translation>
+        <translation>UEFI (не CSM)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="197"/>
         <source>BIOS or UEFI-CSM</source>
-        <translation type="unfinished"></translation>
+        <translation>BIOS или UEFI-CSM</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="222"/>
-        <location filename="../mainwindow.cpp" line="267"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Бревно</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="228"/>
-        <location filename="../mainwindow.cpp" line="806"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЧИНАТЬ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="238"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАКРЫВАТЬ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="253"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Главная панель инструментов</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="259"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="263"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="273"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>О</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
         <source>Drive Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Свойства диска</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="284"/>
         <source>Device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Устройство:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="289"/>
         <source>Refresh device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновить список устройств</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="298"/>
         <source>List USB Hard Drives (Use with caution)</source>
-        <translation type="unfinished"></translation>
+        <translation>Список жестких дисков USB (используйте с осторожностью)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="302"/>
         <source>Add fixes for old BIOSes (extra partition, alignment)</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавлены исправления для старых биосов (дополнительный раздел, выравнивание)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="308"/>
         <source>Show advanced drive properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать дополнительные свойства диска</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
         <source>Format Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметры формата</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="325"/>
         <source>Volume label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Метка тома:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="331"/>
         <source>Extended label and icon files</source>
-        <translation type="unfinished"></translation>
+        <translation>Расширенные файлы меток и значков</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
         <source>File system:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файловая система:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="340"/>
         <source>Cluster size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер кластера:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="345"/>
         <source>Quick format</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрое форматирование</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="351"/>
         <source>Bad blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Плохие блоки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>1 pass</source>
-        <translation type="unfinished"></translation>
+        <translation>1 проход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>2 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>2 прохода</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>3 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>3 прохода</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
         <source>4 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>4 прохода</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
         <source>5 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>5 проходов</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
         <source>Persistent</source>
-        <translation type="unfinished"></translation>
+        <translation>Настойчивый</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="371"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>МБ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="371"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>ГБ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="378"/>
         <source>UEFI validation (Secure Boot)</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка UEFI (безопасная загрузка)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Статус</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
-        <location filename="../mainwindow.cpp" line="815"/>
-        <location filename="../mainwindow.cpp" line="819"/>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Готовый</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="455"/>
         <source>WARNING: Missing system tools: </source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Отсутствуют системные инструменты:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
         <source>All required system tools found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Все необходимые системные инструменты найдены.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
         <source>Detected system root disk to protect: /dev/</source>
-        <translation type="unfinished"></translation>
+        <translation>Обнаружен корневой диск системы для защиты: /dev/</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
         <source>Generic Flash Drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Универсальный флэш-накопитель</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="569"/>
         <source> (Internal)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Внутренний)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="574"/>
         <source>No compatible USB drives found</source>
-        <translation type="unfinished"></translation>
+        <translation>Совместимые USB-накопители не найдены</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="597"/>
         <source>Open Bootable Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть загрузочный образ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="598"/>
         <source>Bootable ISO/IMG Images (*.iso *.iso.gz *.img *.img.gz);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузочные образы ISO/IMG (*.iso *.iso.gz *.img *.img.gz);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="619"/>
         <source>Selected image file: %1 (%2 bytes)</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбранный файл изображения: %1 ( %2 байт).</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="624"/>
         <source>UEFI pre-check: ISO appears UEFI-compatible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Предварительная проверка UEFI: ISO кажется UEFI-совместимым.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="626"/>
         <source>WARNING: ISO may not be UEFI-compatible (no EFI boot entries detected).</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: ISO может быть несовместим с UEFI (загрузочные записи EFI не обнаружены).</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="666"/>
         <source>Cancel requested by user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Отмена по запросу пользователя.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="678"/>
         <source>No Target Device Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Целевое устройство не выбрано</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="679"/>
         <source>Please select a valid destination USB drive first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сначала выберите действительный целевой USB-накопитель.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="688"/>
         <source>No Bootable ISO Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузочный ISO не выбран</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="689"/>
-        <source>You have selected &apos;Disk or ISO image&apos; as the boot selection, but have not chosen a file. Please click &apos;SELECT&apos; and choose an ISO first.</source>
-        <translation type="unfinished"></translation>
+        <source>You have selected 'Disk or ISO image' as the boot selection, but have not chosen a file. Please click 'SELECT' and choose an ISO first.</source>
+        <translation>Вы выбрали «Диск или ISO-образ» в качестве выбора загрузки, но не выбрали файл. Пожалуйста, нажмите «ВЫБРАТЬ» и сначала выберите ISO.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="697"/>
         <source>ISO Too Large</source>
-        <translation type="unfinished"></translation>
+        <translation>ISO слишком велико</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="698"/>
         <source>The selected image file (%1 bytes) is larger than the target device (%2 bytes).
 
 Please select a smaller image or a larger USB drive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбранный файл изображения ( %1 байт) больше целевого устройства ( %2 байт).
+
+Выберите изображение меньшего размера или USB-накопитель большего размера.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="704"/>
-        <source>WARNING: ALL DATA ON DEVICE &apos;/dev/%1&apos; WILL BE DESTROYED!
+        <source>WARNING: ALL DATA ON DEVICE '/dev/%1' WILL BE DESTROYED!
 
 Disk Model: %2
 Capacity: %3
 
 To continue with this operation, click OK. To quit click Cancel.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: ВСЕ ДАННЫЕ НА УСТРОЙСТВЕ '/dev/%1' БУДУТ УНИЧТОЖЕНЫ!
+
+Модель диска: %2
+Емкость: %3
+
+Чтобы продолжить эту операцию, нажмите кнопку ОК. Чтобы выйти, нажмите «Отмена».</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="710"/>
         <source>WARNING: DESTROYING DATA!</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: УНИЧТОЖЕНИЕ ДАННЫХ!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="746"/>
         <source>CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТМЕНА</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="816"/>
         <source>Canceled</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="820"/>
         <source>Success!</source>
-        <translation type="unfinished"></translation>
+        <translation>Успех!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="821"/>
         <source>Operation Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Операция завершена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="827"/>
         <source>Image Checksums</source>
-        <translation type="unfinished"></translation>
+        <translation>Контрольные суммы изображений</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="847"/>
         <source>Select Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите язык</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="875"/>
         <source>Select application language (restart required):</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите язык приложения (требуется перезагрузка):</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="890"/>
         <source>Language Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык изменен</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="891"/>
         <source>Language has been set to %1.
 Please restart the application for the change to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык установлен на %1 .
+Пожалуйста, перезапустите приложение, чтобы изменения вступили в силу.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="897"/>
         <source>About Rufus Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>О Руфусе Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="898"/>
         <source>Rufus Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Руфус Кью</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="899"/>
         <source>The Reliable USB Formatting Utility</source>
-        <translation type="unfinished"></translation>
+        <translation>Надежная утилита форматирования USB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="900"/>
         <source>Linux port using Qt6 Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт Linux с использованием виджетов Qt6</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="901"/>
         <source>Based on the original Rufus by Pete Batard</source>
-        <translation type="unfinished"></translation>
+        <translation>На основе оригинального Руфуса Пита Батарда.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
         <source>Rufus Qt Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки Руфуса Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="912"/>
         <source>Quick format by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрое форматирование по умолчанию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="915"/>
         <source>UEFI validation by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка UEFI по умолчанию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="918"/>
         <source>Show USB hard drives by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать жесткие диски USB по умолчанию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="921"/>
         <source>Old BIOS fixes by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Старые исправления BIOS по умолчанию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="930"/>
         <source>Theme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тема:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Система</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Свет</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="46"/>
-        <source>Privilege Escalation Failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="47"/>
-        <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. &apos;sudo rufus-qt&apos;).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="59"/>
-        <source>Privilege Escalation Required</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="60"/>
-        <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. &apos;sudo rufus-qt&apos; or &apos;pkexec rufus-qt&apos;).</source>
-        <translation type="unfinished"></translation>
+        <translation>Темный</translation>
     </message>
 </context>
 </TS>

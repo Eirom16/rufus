@@ -1,296 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
+<?xml version='1.0' encoding='utf-8'?>
 <TS version="2.1" language="fr">
 <context>
     <name>BurnWorker</name>
     <message>
-        <location filename="../workers.cpp" line="54"/>
         <source>Failed to start: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec du démarrage : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="74"/>
         <source>Command timed out after %1 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>La commande a expiré après %1 secondes</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="94"/>
         <source>Failed with exit code %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec avec le code de sortie %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="105"/>
         <source>Unmounting any active partitions on %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Démontage de toutes les partitions actives sur %1...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="112"/>
         <source>Wiping partition table on %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacement de la table de partition sur %1...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="119"/>
         <source>Scanning for bad blocks (%1 pass)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de blocs défectueux (passe %1)...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="120"/>
         <source>Scanning for bad blocks...</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de blocs défectueux...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="120"/>
-        <location filename="../workers.cpp" line="371"/>
-        <location filename="../workers.cpp" line="375"/>
-        <location filename="../workers.cpp" line="393"/>
-        <location filename="../workers.cpp" line="401"/>
-        <location filename="../workers.cpp" line="408"/>
-        <location filename="../workers.cpp" line="417"/>
         <source>Busy</source>
-        <translation type="unfinished"></translation>
+        <translation>Occupé</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="133"/>
         <source>not available, skipping scan.</source>
-        <translation type="unfinished"></translation>
+        <translation>non disponible, saut d'analyse.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="148"/>
         <source>WARNING: Bad blocks found or scan incomplete. Continuing anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : blocs défectueux trouvés ou analyse incomplète. On continue quand même.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="150"/>
         <source>Bad block scan complete — no errors found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Analyse des blocs défectueux terminée – aucune erreur trouvée.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="157"/>
         <source>Creating partition table using parted...</source>
-        <translation type="unfinished"></translation>
+        <translation>Création d'une table de partition à l'aide de parted...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="192"/>
-        <source>Formatting partition %1 to %2 with label &apos;%3&apos;...</source>
-        <translation type="unfinished"></translation>
+        <source>Formatting partition %1 to %2 with label '%3'...</source>
+        <translation>Formatage de la partition %1 en %2 avec l'étiquette ' %3 '...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="210"/>
         <source>Starting ISO burn process...</source>
-        <translation type="unfinished"></translation>
+        <translation>Démarrage du processus de gravure ISO...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="221"/>
         <source>CRITICAL ERROR: Failed to launch dd subprocess!</source>
-        <translation type="unfinished"></translation>
+        <translation>ERREUR CRITIQUE : échec du lancement du sous-processus dd !</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="254"/>
         <source>Speed: %1 MB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>Vitesse : %1 Mo/s</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="261"/>
         <source>ETA: %1:%2:%3</source>
-        <translation type="unfinished"></translation>
+        <translation>ETA : %1 : %2 : %3</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="266"/>
         <source>ETA: %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation>ETA : %1 : %2</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="270"/>
         <source>Writing ISO... %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Écriture ISO... %1 %</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="282"/>
         <source>Finished with exit code %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminé avec le code de sortie %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="290"/>
         <source>Creating persistent storage partition...</source>
-        <translation type="unfinished"></translation>
+        <translation>Création d'une partition de stockage persistante...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="309"/>
         <source>Validating UEFI boot structure...</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation de la structure de démarrage UEFI...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="318"/>
         <source>UEFI validation: could not mount partition.</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation UEFI : impossible de monter la partition.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="326"/>
         <source>UEFI validation PASSED: EFI boot loader found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation UEFI RÉUSSIE : chargeur de démarrage EFI trouvé.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="329"/>
         <source>WARNING: No EFI boot loader found. The drive may not boot on UEFI systems.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : aucun chargeur de démarrage EFI trouvé. Le lecteur peut ne pas démarrer sur les systèmes UEFI.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="360"/>
-        <location filename="../workers.cpp" line="369"/>
         <source>================================================</source>
-        <translation type="unfinished"></translation>
+        <translation>=================================================</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="361"/>
         <source>Starting formatting/writing process for device: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Démarrage du processus de formatage/écriture pour l'appareil : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="362"/>
         <source>Target partition scheme: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Schéma de partition cible : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="363"/>
         <source>Target filesystem: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Système de fichiers cible : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="364"/>
         <source>Volume label: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Libellé du volume : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="366"/>
         <source>Source ISO image: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Image ISO source : %1</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="368"/>
         <source>Persistent storage: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Stockage persistant : %1 %2</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="371"/>
         <source>Unmounting existing partitions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Démontage des partitions existantes...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="373"/>
-        <location filename="../workers.cpp" line="377"/>
-        <location filename="../workers.cpp" line="381"/>
-        <location filename="../workers.cpp" line="385"/>
-        <location filename="../workers.cpp" line="390"/>
-        <location filename="../workers.cpp" line="395"/>
-        <location filename="../workers.cpp" line="399"/>
-        <location filename="../workers.cpp" line="403"/>
-        <location filename="../workers.cpp" line="410"/>
-        <location filename="../workers.cpp" line="414"/>
-        <location filename="../workers.cpp" line="423"/>
         <source>Canceled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Annulé.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="375"/>
         <source>Wiping partition tables...</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacement des tables de partition...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="378"/>
         <source>Failed to wipe device. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l'effacement de l'appareil. Consultez le journal pour plus de détails.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="386"/>
         <source>Bad block scan failed or aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>L'analyse des blocs défectueux a échoué ou a été abandonnée.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="393"/>
         <source>Creating partitions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Création de partitions...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="396"/>
         <source>Failed to create partitions. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la création de partitions. Consultez le journal pour plus de détails.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="401"/>
         <source>Formatting filesystem...</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatage du système de fichiers...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="404"/>
         <source>Failed to format partition. Check the log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec du formatage de la partition. Consultez le journal pour plus de détails.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="408"/>
         <source>Writing ISO image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Écriture d'une image ISO...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="410"/>
         <source>Failed to write ISO image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l'écriture de l'image ISO.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="417"/>
         <source>Creating persistent partition...</source>
-        <translation type="unfinished"></translation>
+        <translation>Création d'une partition persistante...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="420"/>
         <source>WARNING: Failed to create persistent partition.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : échec de la création d'une partition persistante.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="425"/>
         <source>Synchronizing filesystem cache...</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisation du cache du système de fichiers...</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="425"/>
         <source>Syncing</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisation</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="426"/>
         <source>Flushing cache buffers... Please do not unplug the drive!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vider les tampons de cache... Veuillez ne pas débrancher le lecteur !</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="428"/>
         <source>Synchronized. USB drive is now safe to unplug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisé. La clé USB peut désormais être débranchée en toute sécurité.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="430"/>
         <source>Complete!</source>
-        <translation type="unfinished"></translation>
+        <translation>Complet!</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="430"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Fait</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="431"/>
         <source>Rufus Qt has successfully formatted and written to the USB device %1.
 Your bootable drive is ready!</source>
-        <translation type="unfinished"></translation>
+        <translation>Rufus Qt a formaté et écrit avec succès sur le périphérique USB %1 .
+Votre disque bootable est prêt !</translation>
     </message>
 </context>
 <context>
     <name>HashWorker</name>
     <message>
-        <location filename="../workers.cpp" line="447"/>
         <source>Error opening image file for checksum.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur lors de l'ouverture du fichier image pour la somme de contrôle.</translation>
     </message>
     <message>
-        <location filename="../workers.cpp" line="471"/>
         <source>File: %1
 Size: %2 bytes (%3 GB)
 
@@ -298,490 +227,407 @@ MD5:    %4
 SHA-1:  %5
 SHA-256:%6
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier : %1
+Taille : %2 octets ( %3 Go)
+
+MD5 : %4
+SHA-1 : %5
+SHA-256 : %6</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="92"/>
+        <source>Privilege Escalation Failed</source>
+        <translation>Échec de l'élévation des privilèges</translation>
+    </message>
+    <message>
+        <source>Rufus Qt needs root privileges to write raw block devices.
+Please run the application as root (e.g. 'sudo rufus-qt').</source>
+        <translation>Rufus Qt a besoin des privilèges root pour écrire des périphériques de bloc brut.
+Veuillez exécuter l'application en tant que root (par exemple 'sudo rufus-qt').</translation>
+    </message>
+    <message>
+        <source>Privilege Escalation Required</source>
+        <translation>Élévation de privilèges requise</translation>
+    </message>
+    <message>
+        <source>Rufus Qt needs root privileges to write raw block devices.
+Please run the application as root (e.g. 'sudo rufus-qt' or 'pkexec rufus-qt').</source>
+        <translation>Rufus Qt a besoin des privilèges root pour écrire des périphériques de bloc brut.
+Veuillez exécuter l'application en tant que root (par exemple « sudo rufus-qt » ou « pkexec rufus-qt »).</translation>
+    </message>
+    <message>
         <source>Rufus Qt v</source>
-        <translation type="unfinished"></translation>
+        <translation>Rufus Qtv</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="153"/>
         <source>Boot Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection de démarrage</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="158"/>
         <source>Boot selection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection de démarrage :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="160"/>
         <source>Disk or ISO image (Please select)</source>
-        <translation type="unfinished"></translation>
+        <translation>Disque ou image ISO (Veuillez sélectionner)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="161"/>
         <source>Non bootable</source>
-        <translation type="unfinished"></translation>
+        <translation>Non démarrable</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="166"/>
         <source>SELECT</source>
-        <translation type="unfinished"></translation>
+        <translation>SÉLECTIONNER</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="176"/>
         <source>Image option:</source>
-        <translation type="unfinished"></translation>
+        <translation>Options d'image :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="178"/>
         <source>Write in ISO Image mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrire en mode image ISO</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="178"/>
         <source>Write in DD Image mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrire en mode DD Image</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="183"/>
         <source>Selected file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier sélectionné :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="588"/>
         <source>No image selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune image sélectionnée</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="189"/>
         <source>Partition scheme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Schéma de partition :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="195"/>
         <source>Target system:</source>
-        <translation type="unfinished"></translation>
+        <translation>Système cible :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="197"/>
         <source>UEFI (non CSM)</source>
-        <translation type="unfinished"></translation>
+        <translation>UEFI (non CSM)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="197"/>
         <source>BIOS or UEFI-CSM</source>
-        <translation type="unfinished"></translation>
+        <translation>BIOS ou UEFI-CSM</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="222"/>
-        <location filename="../mainwindow.cpp" line="267"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="228"/>
-        <location filename="../mainwindow.cpp" line="806"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>COMMENCER</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="238"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>FERMER</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="253"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barre d'outils principale</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="259"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="263"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="273"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
         <source>Drive Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétés du lecteur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="284"/>
         <source>Device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Appareil:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="289"/>
         <source>Refresh device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualiser la liste des appareils</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="298"/>
         <source>List USB Hard Drives (Use with caution)</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste des disques durs USB (à utiliser avec prudence)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="302"/>
         <source>Add fixes for old BIOSes (extra partition, alignment)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter des correctifs pour les anciens BIOS (partition supplémentaire, alignement)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="308"/>
         <source>Show advanced drive properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les propriétés avancées du lecteur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
         <source>Format Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options de formatage</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="325"/>
         <source>Volume label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Libellé du volume :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="331"/>
         <source>Extended label and icon files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers d'étiquettes et d'icônes étendus</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
         <source>File system:</source>
-        <translation type="unfinished"></translation>
+        <translation>Système de fichiers :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="340"/>
         <source>Cluster size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille du cluster :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="345"/>
         <source>Quick format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatage rapide</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="351"/>
         <source>Bad blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Mauvais blocs</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>1 pass</source>
-        <translation type="unfinished"></translation>
+        <translation>1 passe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>2 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>2 passages</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="353"/>
         <source>3 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>3 passes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
         <source>4 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>4 passes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
         <source>5 passes</source>
-        <translation type="unfinished"></translation>
+        <translation>5 passes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
         <source>Persistent</source>
-        <translation type="unfinished"></translation>
+        <translation>Persistant</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="371"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>Mo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="371"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>FR</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="378"/>
         <source>UEFI validation (Secure Boot)</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation UEFI (démarrage sécurisé)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Statut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
-        <location filename="../mainwindow.cpp" line="815"/>
-        <location filename="../mainwindow.cpp" line="819"/>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Prêt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="455"/>
         <source>WARNING: Missing system tools: </source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : outils système manquants :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
         <source>All required system tools found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous les outils système requis trouvés.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
         <source>Detected system root disk to protect: /dev/</source>
-        <translation type="unfinished"></translation>
+        <translation>Disque racine du système détecté à protéger : /dev/</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
         <source>Generic Flash Drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Clé USB générique</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="569"/>
         <source> (Internal)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Interne)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="574"/>
         <source>No compatible USB drives found</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune clé USB compatible trouvée</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="597"/>
         <source>Open Bootable Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir l'image de démarrage</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="598"/>
         <source>Bootable ISO/IMG Images (*.iso *.iso.gz *.img *.img.gz);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Images ISO/IMG amorçables (*.iso *.iso.gz *.img *.img.gz);;Tous les fichiers (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="619"/>
         <source>Selected image file: %1 (%2 bytes)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier image sélectionné : %1 ( %2 octets)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="624"/>
         <source>UEFI pre-check: ISO appears UEFI-compatible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pré-vérification UEFI : l'ISO semble compatible UEFI.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="626"/>
         <source>WARNING: ISO may not be UEFI-compatible (no EFI boot entries detected).</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : l'ISO peut ne pas être compatible UEFI (aucune entrée de démarrage EFI détectée).</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="666"/>
         <source>Cancel requested by user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Annulation demandée par l'utilisateur.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="678"/>
         <source>No Target Device Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun périphérique cible sélectionné</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="679"/>
         <source>Please select a valid destination USB drive first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez d'abord sélectionner une clé USB de destination valide.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="688"/>
         <source>No Bootable ISO Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun ISO amorçable sélectionné</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="689"/>
-        <source>You have selected &apos;Disk or ISO image&apos; as the boot selection, but have not chosen a file. Please click &apos;SELECT&apos; and choose an ISO first.</source>
-        <translation type="unfinished"></translation>
+        <source>You have selected 'Disk or ISO image' as the boot selection, but have not chosen a file. Please click 'SELECT' and choose an ISO first.</source>
+        <translation>Vous avez sélectionné « Disque ou image ISO » comme sélection de démarrage, mais vous n'avez pas choisi de fichier. Veuillez cliquer sur « SÉLECTIONNER » et choisissez d'abord un ISO.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="697"/>
         <source>ISO Too Large</source>
-        <translation type="unfinished"></translation>
+        <translation>ISO trop grande</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="698"/>
         <source>The selected image file (%1 bytes) is larger than the target device (%2 bytes).
 
 Please select a smaller image or a larger USB drive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier image sélectionné ( %1 octets) est plus grand que le périphérique cible ( %2 octets).
+
+Veuillez sélectionner une image plus petite ou une clé USB plus grande.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="704"/>
-        <source>WARNING: ALL DATA ON DEVICE &apos;/dev/%1&apos; WILL BE DESTROYED!
+        <source>WARNING: ALL DATA ON DEVICE '/dev/%1' WILL BE DESTROYED!
 
 Disk Model: %2
 Capacity: %3
 
 To continue with this operation, click OK. To quit click Cancel.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTISSEMENT : TOUTES LES DONNÉES SUR L'APPAREIL '/dev/ %1 ' SERONT DÉTRUITES !
+
+Modèle de disque : %2
+Capacité : %3
+
+Pour poursuivre cette opération, cliquez sur OK. Pour quitter, cliquez sur Annuler.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="710"/>
         <source>WARNING: DESTROYING DATA!</source>
-        <translation type="unfinished"></translation>
+        <translation>ATTENTION : DÉTRUITE DES DONNÉES !</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="746"/>
         <source>CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>ANNULER</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="816"/>
         <source>Canceled</source>
-        <translation type="unfinished"></translation>
+        <translation>Annulé</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="820"/>
         <source>Success!</source>
-        <translation type="unfinished"></translation>
+        <translation>Succès!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="821"/>
         <source>Operation Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Opération terminée</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="827"/>
         <source>Image Checksums</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommes de contrôle des images</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="847"/>
         <source>Select Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionnez la langue</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="875"/>
         <source>Select application language (restart required):</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionnez la langue de l'application (redémarrage requis) :</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="890"/>
         <source>Language Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue modifiée</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="891"/>
         <source>Language has been set to %1.
 Please restart the application for the change to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>La langue a été définie sur %1 .
+Veuillez redémarrer l'application pour que la modification prenne effet.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="897"/>
         <source>About Rufus Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos de Rufus Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="898"/>
         <source>Rufus Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Rufus Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="899"/>
         <source>The Reliable USB Formatting Utility</source>
-        <translation type="unfinished"></translation>
+        <translation>L'utilitaire de formatage USB fiable</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="900"/>
         <source>Linux port using Qt6 Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>Portage Linux utilisant les widgets Qt6</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="901"/>
         <source>Based on the original Rufus by Pete Batard</source>
-        <translation type="unfinished"></translation>
+        <translation>Basé sur le Rufus original de Pete Batard</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
         <source>Rufus Qt Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Préférences de Rufus Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="912"/>
         <source>Quick format by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatage rapide par défaut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="915"/>
         <source>UEFI validation by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation UEFI par défaut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="918"/>
         <source>Show USB hard drives by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les disques durs USB par défaut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="921"/>
         <source>Old BIOS fixes by default</source>
-        <translation type="unfinished"></translation>
+        <translation>Anciens correctifs du BIOS par défaut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="930"/>
         <source>Theme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Système</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Lumière</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="932"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="46"/>
-        <source>Privilege Escalation Failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="47"/>
-        <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. &apos;sudo rufus-qt&apos;).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="59"/>
-        <source>Privilege Escalation Required</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="60"/>
-        <source>Rufus Qt needs root privileges to write raw block devices.
-Please run the application as root (e.g. &apos;sudo rufus-qt&apos; or &apos;pkexec rufus-qt&apos;).</source>
-        <translation type="unfinished"></translation>
+        <translation>Sombre</translation>
     </message>
 </context>
 </TS>
