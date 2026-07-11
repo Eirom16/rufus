@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rufus Qt
+Comment=The Reliable USB Formatting Utility
+Exec=pkexec /usr/bin/rufus-qt
+Icon=rufus
+Terminal=false
+Type=Application
+Categories=System;Utility;
+StartupNotify=true

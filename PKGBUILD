@@ -1,34 +1,29 @@
 # Maintainer: DeepMind Antigravity Pair Programmer
-pkgname=rufus-linux
+pkgname=rufus-qt
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="The Reliable USB Formatting Utility for Arch Linux (Native GTK3 Port)"
+pkgdesc="The Reliable USB Formatting Utility (Qt6 Port)"
 arch=('x86_64')
 url="https://github.com/pbatard/rufus"
 license=('GPL3')
-depends=('gtk3' 'openssl' 'polkit')
-makedepends=('pkg-config' 'autoconf' 'automake' 'make')
+depends=('qt6-base' 'polkit')
+makedepends=('cmake' 'ninja')
 source=()
 
 build() {
   cd "$startdir"
-  # Clean previous builds to guarantee fresh packaging
-  make clean 2>/dev/null || true
-  ./bootstrap.sh
-  ./configure --prefix=/usr
-  make
+  cmake -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  # Install the compiled ELF widescreen binary to system bins
-  install -Dm755 "$startdir/src/rufus-linux" "$pkgdir/usr/bin/rufus-linux"
+  install -Dm755 "$startdir/build/src/rufus-qt" "$pkgdir/usr/bin/rufus-qt"
 
-  # Install the premium desktop launcher shortcut
-  install -Dm644 "$startdir/rufus-linux.desktop" "$pkgdir/usr/share/applications/rufus-linux.desktop"
+  install -Dm644 "$startdir/rufus-qt.desktop" "$pkgdir/usr/share/applications/rufus-qt.desktop"
 
-  # Install the official high-fidelity icon globally
   install -Dm644 "$startdir/res/icons/rufus-128.png" "$pkgdir/usr/share/pixmaps/rufus.png"
 
-  # Install the Polkit policy file for graphical pkexec authentication
   install -Dm644 "$startdir/org.rufus.pkexec.policy" "$pkgdir/usr/share/polkit-1/actions/org.rufus.pkexec.policy"
 }

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Rufus (Linux Port)
-Comment=The Reliable USB Formatting Utility for Arch Linux
-Exec=pkexec /usr/bin/rufus-linux
-Icon=rufus
-Terminal=false
-Type=Application
-Categories=System;Utility;
-StartupNotify=true

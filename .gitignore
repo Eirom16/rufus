@@ -96,6 +96,7 @@ build/
 
 # Linux build artifacts
 src/rufus-linux
+src/rufus-qt
 src/*.o
 src/*.lo
 src/*.la

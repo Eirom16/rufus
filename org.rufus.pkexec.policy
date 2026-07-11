@@ -4,15 +4,15 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="org.rufus.pkexec.rufus-linux">
-    <message>Authentication is required to run Rufus USB Formatter</message>
+  <action id="org.rufus.pkexec.rufus-qt">
+    <message>Authentication is required to run Rufus Qt USB Formatter</message>
     <icon_name>rufus</icon_name>
     <defaults>
       <allow_any>auth_admin</allow_any>
       <allow_inactive>auth_admin</allow_inactive>
       <allow_active>auth_admin_keep</allow_active>
     </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/rufus-linux</annotate>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/rufus-qt</annotate>
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
 
