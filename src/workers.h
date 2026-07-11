@@ -15,10 +15,15 @@ public:
     explicit BurnWorker(const QString &devicePath, const QString &isoPath,
                         const QString &filesystem, const QString &partitionScheme,
                         const QString &volumeLabel, bool writeIso, qint64 isoSize,
+                        int badBlocks, bool persistent, int persistentSize,
+                        const QString &persistentUnits,
                         QObject *parent = nullptr);
+
+    static bool checkIsoUefi(const QString &isoPath);
 
 public slots:
     void burn();
+    void cancel();
 
 signals:
     void progressUpdated(double pct, const QString &status, const QString &speedEta);
@@ -26,12 +31,16 @@ signals:
     void finished(const QString &result);
 
 private:
-    bool runCmd(const QString &program, const QStringList &args, const QString &logPrefix);
+    bool runCmd(const QString &program, const QStringList &args, const QString &logPrefix,
+                int timeoutSecs = 120);
     void unmountDevice();
     bool wipeDevice();
+    bool scanBadBlocks();
     bool createPartitions();
     bool formatPartition();
     bool writeIsoImage();
+    bool createPersistentPartition();
+    bool validateUefiBoot();
 
     QString m_devicePath;
     QString m_isoPath;
@@ -40,9 +49,14 @@ private:
     QString m_volumeLabel;
     bool m_writeIso;
     qint64 m_isoSize;
+    int m_badBlocks;
+    bool m_persistent;
+    int m_persistentSize;
+    QString m_persistentUnits;
 
     QElapsedTimer m_timer;
-    QByteArray m_ddBuf;
+    bool m_canceled = false;
+    QProcess *m_activeProc = nullptr;
 };
 
 class HashWorker : public QObject

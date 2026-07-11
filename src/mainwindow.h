@@ -16,11 +16,14 @@
 #include <QAction>
 #include <QThread>
 #include <QProcess>
+#include <QCloseEvent>
+#include <QStyleHints>
 
 struct DiskInfo {
     QString name;      // e.g. "sdb"
     QString model;     // e.g. "Cruzer Blade"
     QString size;      // e.g. "14.9G"
+    qint64 sizeBytes;  // size in bytes
     bool removable;    // true for USB
     bool readOnly;     // true for read-only
 };
@@ -36,6 +39,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+    enum Theme { ThemeSystem = 0, ThemeLight, ThemeDark };
+
 private slots:
     void refreshDevices();
     void onBootSelectionChanged(int index);
@@ -43,6 +48,7 @@ private slots:
     void onPartitionSchemeChanged(int index);
     void onTargetSystemChanged(int index);
     void onStartClicked();
+    void onCancelClicked();
     void onLogToggleClicked(bool checked);
     void onLanguageAction();
     void onAboutAction();
@@ -58,20 +64,26 @@ private:
     void setupUi();
     void setupToolbar();
     void setupDriveProperties();
-    void setupBootSelection();
     void setupFormatOptions();
     void setupStatusSection();
     void detectSystemRootDisk();
+    void checkSystemTools();
+    void applyTheme();
+    void loadSettings();
+    void saveSettings();
+    void closeEvent(QCloseEvent *event) override;
     void disableControls();
     void enableControls();
     void logMessage(const QString &msg);
 
     // UI state
+    QString m_lastIsoDir;
     QString m_selectedIsoPath;
     qint64 m_selectedIsoSize = 0;
     QString m_systemRootDisk;
     QList<DiskInfo> m_disks;
     bool m_isRunning = false;
+    Theme m_currentTheme = ThemeSystem;
 
     // Toolbar
     QToolBar *m_toolbar = nullptr;
