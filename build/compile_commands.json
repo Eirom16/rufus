@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/eirom/Documents/New Folder/rufus-linux/build/src",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -I\"/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/include\" -I\"/home/eirom/Documents/New Folder/rufus-linux/src\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -O3 -DNDEBUG -std=gnu++17 -mno-direct-extern-access -o CMakeFiles/rufus-qt.dir/rufus-qt_autogen/mocs_compilation.cpp.o -c \"/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/mocs_compilation.cpp\"",
+  "file": "/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/mocs_compilation.cpp",
+  "output": "src/CMakeFiles/rufus-qt.dir/rufus-qt_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/eirom/Documents/New Folder/rufus-linux/build/src",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -I\"/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/include\" -I\"/home/eirom/Documents/New Folder/rufus-linux/src\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -O3 -DNDEBUG -std=gnu++17 -mno-direct-extern-access -o CMakeFiles/rufus-qt.dir/main.cpp.o -c \"/home/eirom/Documents/New Folder/rufus-linux/src/main.cpp\"",
+  "file": "/home/eirom/Documents/New Folder/rufus-linux/src/main.cpp",
+  "output": "src/CMakeFiles/rufus-qt.dir/main.cpp.o"
+},
+{
+  "directory": "/home/eirom/Documents/New Folder/rufus-linux/build/src",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -I\"/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/include\" -I\"/home/eirom/Documents/New Folder/rufus-linux/src\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -O3 -DNDEBUG -std=gnu++17 -mno-direct-extern-access -o CMakeFiles/rufus-qt.dir/mainwindow.cpp.o -c \"/home/eirom/Documents/New Folder/rufus-linux/src/mainwindow.cpp\"",
+  "file": "/home/eirom/Documents/New Folder/rufus-linux/src/mainwindow.cpp",
+  "output": "src/CMakeFiles/rufus-qt.dir/mainwindow.cpp.o"
+},
+{
+  "directory": "/home/eirom/Documents/New Folder/rufus-linux/build/src",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -I\"/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/include\" -I\"/home/eirom/Documents/New Folder/rufus-linux/src\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -O3 -DNDEBUG -std=gnu++17 -mno-direct-extern-access -o CMakeFiles/rufus-qt.dir/workers.cpp.o -c \"/home/eirom/Documents/New Folder/rufus-linux/src/workers.cpp\"",
+  "file": "/home/eirom/Documents/New Folder/rufus-linux/src/workers.cpp",
+  "output": "src/CMakeFiles/rufus-qt.dir/workers.cpp.o"
+}
+]

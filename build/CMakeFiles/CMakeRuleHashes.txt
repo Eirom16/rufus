@@ -1,7 +1,7 @@
 # Hashes of file build rules.
 b8bf56ccbab500d0cfd97888727d8cfd src/CMakeFiles/rufus-qt_autogen
 b8bf56ccbab500d0cfd97888727d8cfd src/CMakeFiles/rufus-qt_qm
-b7b2e1edaa0e31071b2af0b0d0feafd1 src/rufus-qt_autogen/timestamp
+ecab75005a396d4262c913c0dd527541 src/rufus-qt_autogen/timestamp
 d8677d9753e90ceeb4d29948d489cd27 src/translations/rufus-qt_de.qm
 3dfcf038c1d43abce4f0b41df7f9d448 src/translations/rufus-qt_es.qm
 a8bcb1a9fd2dc1ad40abab9f94855beb src/translations/rufus-qt_fr.qm

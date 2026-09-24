@@ -72,7 +72,7 @@ src/rufus-qt_autogen/timestamp: /usr/lib/qt6/moc
 src/rufus-qt_autogen/timestamp: /usr/lib/qt6/uic
 src/rufus-qt_autogen/timestamp: src/CMakeFiles/rufus-qt_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/eirom/Documents/New Folder/rufus-linux/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target rufus-qt"
-	cd "/home/eirom/Documents/New Folder/rufus-linux/build/src" && /usr/bin/cmake -E cmake_autogen "/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt_autogen.dir/AutogenInfo.json" ""
+	cd "/home/eirom/Documents/New Folder/rufus-linux/build/src" && /usr/bin/cmake -E cmake_autogen "/home/eirom/Documents/New Folder/rufus-linux/build/src/CMakeFiles/rufus-qt_autogen.dir/AutogenInfo.json" Release
 	cd "/home/eirom/Documents/New Folder/rufus-linux/build/src" && /usr/bin/cmake -E touch "/home/eirom/Documents/New Folder/rufus-linux/build/src/rufus-qt_autogen/timestamp"
 
 src/CMakeFiles/rufus-qt_autogen.dir/codegen:

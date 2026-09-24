@@ -1,0 +1,14 @@
+{
+  "file_types": {
+    "XML": [
+      "src/translations/*.ts"
+    ]
+  },
+  "lsp": {
+    "clangd": {
+      "initialization_options": {
+        "compilationDatabasePath": "build"
+      }
+    }
+  }
+}
